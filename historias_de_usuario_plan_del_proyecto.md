@@ -7,16 +7,18 @@
 ### Módulo 1. Onboarding del cliente
 * **HU-01:** **COMO** propietario, **QUIERO** registrarme desde mi celular e indicar qué inmueble quiero ceder, **PARA** iniciar el proceso sin desplazarme ni llenar papeles.
 * **HU-02:** **COMO** propietario, **QUIERO** aceptar de forma clara cómo se usarán mis datos personales, **PARA** tener certeza de que mi información está protegida y de que mi autorización es consciente.
-* **HU-03:** **COMO** propietario, **QUIERO** subir los documentos del inmueble y los míos (escritura, certificado de tradición y libertad, cédula) desde la app, **PARA** no entregar los mismos papeles varias veces.
-* **HU-04:** **COMO** propietario, **QUIERO** ver en qué paso va mi solicitud, **PARA** saber qué falta y cuándo recibiré respuesta.
+* **HU-03:** **COMO** oficial de cumplimiento, **QUIERO** que el sistema verifique la identidad del cliente y consulte listas restrictivas al registrarse, **PARA** prevenir riesgos de lavado de activos.
+
 
 ### Módulo 2. Ficha del inmueble
-* **HU-05:** **COMO** asesor comercial, **QUIERO** crear la ficha de cada inmueble con sus datos, fotos y documentos legales, **PARA** tener un expediente completo en un solo lugar.
-* **HU-06:** **COMO** abogado de la empresa, **QUIERO** registrar el estudio de títulos y las alertas (gravámenes, embargos, falta de licencias), **PARA** decidir si el inmueble se puede tomar antes de invertir.
-* **HU-07:** **COMO** gerente, **QUIERO** clasificar cada inmueble como “remodelar y vender” o “subdividir y arrendar”, **PARA** que cada uno siga el flujo que le corresponde.
+* **HU-04:** **COMO** asesor comercial, **QUIERO** crear la ficha de cada inmueble con sus datos, fotos y documentos legales, **PARA** tener un expediente completo en un solo lugar.
+* **HU-05:** **COMO** abogado de la empresa, **QUIERO** registrar el estudio de títulos y las alertas (gravámenes, embargos, falta de licencias), **PARA** decidir si el inmueble se puede tomar antes de invertir.
+* **HU-06:** **COMO** gerente, **QUIERO** clasificar cada inmueble como “remodelar y vender” o “subdividir y arrendar”, **PARA** que cada uno siga el flujo que le corresponde.
+* **HU-07:** **COMO** propietario, **QUIERO** subir los documentos del inmueble y los míos (escritura, certificado de tradición y libertad, cédula) desde la app, **PARA** no entregar los mismos papeles varias veces.
+* **HU-08:** **COMO** propietario, **QUIERO** ver en qué paso va mi solicitud, **PARA** saber qué falta y cuándo recibiré respuesta.
 
 ### Cumplimiento (transversal)
-* **HU-08:** **COMO** oficial de cumplimiento, **QUIERO** que el sistema verifique la identidad del cliente y consulte listas restrictivas al registrarse, **PARA** prevenir riesgos de lavado de activos.
+
 * **HU-09:** **COMO** oficial de cumplimiento, **QUIERO** registrar el origen de los fondos y marcar operaciones inusuales, **PARA** poder reportarlas a tiempo si es necesario.
 * **HU-10:** **COMO** administrador, **QUIERO** que cada autorización, firma y verificación quede guardada con fecha y usuario, **PARA** demostrar el cumplimiento ante una auditoría.
 * **HU-11:** **COMO** titular de datos, **QUIERO** poder consultar, corregir o pedir la eliminación de mis datos, **PARA** ejercer mis derechos sin trámites complicados.
