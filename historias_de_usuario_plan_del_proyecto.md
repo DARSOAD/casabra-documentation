@@ -11,10 +11,10 @@
 
 
 ### Módulo 2. Ficha del inmueble
-* **HU-04:** **COMO** asesor comercial, **QUIERO** crear la ficha de cada inmueble con sus datos, fotos y documentos legales, **PARA** tener un expediente completo en un solo lugar.
+* **HU-04:** **COMO** propietario, **QUIERO** subir los documentos del inmueble y los míos (escritura, certificado de tradición y libertad, cédula) desde la app, **PARA** no entregar los mismos papeles varias veces.
+* **HU-04:** **COMO** asesor comercial, **QUIERO** ver la ficha de cada inmueble con sus datos, fotos y documentos legales, **PARA** tener un expediente completo en un solo lugar.
 * **HU-05:** **COMO** abogado de la empresa, **QUIERO** registrar el estudio de títulos y las alertas (gravámenes, embargos, falta de licencias), **PARA** decidir si el inmueble se puede tomar antes de invertir.
 * **HU-06:** **COMO** gerente, **QUIERO** clasificar cada inmueble como “remodelar y vender” o “subdividir y arrendar”, **PARA** que cada uno siga el flujo que le corresponde.
-* **HU-07:** **COMO** propietario, **QUIERO** subir los documentos del inmueble y los míos (escritura, certificado de tradición y libertad, cédula) desde la app, **PARA** no entregar los mismos papeles varias veces.
 * **HU-08:** **COMO** propietario, **QUIERO** ver en qué paso va mi solicitud, **PARA** saber qué falta y cuándo recibiré respuesta.
 
 ### Cumplimiento (transversal)
