@@ -11,6 +11,9 @@
 
 
 ### Módulo 2. Adquisición de inmuebles
+
+[Épica técnica y estimación](epicas%20y%20tiempos/ficha-inmueble-epica.md) · [Criterios mínimos de aceptación en Gherkin](epicas%20y%20tiempos/adquisicion-inmuebles-criterios-aceptacion.md).
+
 * **HU-04:** **COMO** propietario, **QUIERO** subir los documentos del inmueble y los míos (escritura, certificado de tradición y libertad, cédula) desde la app, **PARA** no entregar los mismos papeles varias veces.
 * **HU-05:** **COMO** asesor comercial, **QUIERO** ver la ficha de cada inmueble con sus datos, fotos y documentos legales, **PARA** tener un expediente completo en un solo lugar.
 * **HU-06:** **COMO** abogado de la empresa, **QUIERO** registrar el estudio de títulos y las alertas (gravámenes, embargos, falta de licencias), **PARA** decidir si el inmueble se puede tomar antes de invertir.
