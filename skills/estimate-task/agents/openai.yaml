@@ -1,0 +1,4 @@
+interface:
+  display_name: "Estimate Task"
+  short_description: "Estimaciones por riesgo, referencias y verificación"
+  default_prompt: "Usa $estimate-task para estimar esta tarea o épica con rangos, referencias, riesgos y validación explícitos."
