@@ -12,7 +12,7 @@ La compañía compra inmuebles a propietarios para luego explotarlos comercialme
 4. **Alta en el inventario de la compañía:** una vez completada exitosamente la adquisición y formalizada la titularidad, el inmueble pasa a ser un activo de la compañía.
 5. **Definición del destino:** para cada inmueble adquirido se define una de dos rutas de negocio: **arriendo** o **venta**. La ruta puede contemplar obras o adecuaciones antes de salir al mercado.
 6. **Operación de la ruta elegida:**
-   - **Arriendo:** preparar y publicar el inmueble, gestionar interesados y solicitudes, seleccionar arrendatarios, formalizar el contrato, entregar el inmueble, administrar pagos y obligaciones, y gestionar renovaciones, novedades y cierre del arriendo.
+   - **Arriendo:** preparar y publicar el inmueble, gestionar interesados y solicitudes, seleccionar arrendatarios, formalizar el contrato, entregar el inmueble, administrar pagos y obligaciones, y gestionar renovaciones, novedades y cierre del arriendo. Durante la vigencia, el arrendatario puede consultar su contrato y estado de cuenta, pagar el canon desde la app y descargar sus recibos; el sistema envía recordatorios y el equipo administra la cartera y la mora desde un tablero.
    - **Venta:** preparar y publicar el inmueble, administrar prospectos y actividades del CRM, coordinar visitas, recibir y evaluar ofertas, negociar, formalizar la compraventa y registrar el cierre.
 
 ## Épicas principales del producto
@@ -29,5 +29,6 @@ El producto se organiza alrededor de tres superépicas:
 - En las etapas de arriendo y venta, el actor propietario del activo es la compañía. El propietario original participa durante la adquisición y puede tener acceso a información según el modelo operativo, pero no es quien autoriza la publicación de un inmueble ya comprado.
 - La clasificación comercial se realiza sobre un inmueble adquirido y debe permitir iniciar el flujo correspondiente.
 - Las obras y adecuaciones pueden ser una etapa previa a la comercialización; no cambian el destino aprobado del inmueble.
+- En arriendo, la compañía administra el activo y el arrendatario es un usuario distinto del propietario original. Los pagos digitales se registran contra el contrato y solo se consideran confirmados cuando el proveedor de pago confirma la transacción; los módulos contables consumen esos movimientos para evitar registros duplicados.
 - El CRM de ventas apoya el ciclo de venta de los activos de la compañía. El CRM general también puede dar seguimiento a propietarios y oportunidades durante adquisición, sin confundir ambas etapas.
 
