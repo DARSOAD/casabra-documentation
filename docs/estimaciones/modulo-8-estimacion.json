@@ -1,0 +1,87 @@
+{
+  "method": "estimate-task",
+  "version": 1,
+  "module": "Módulo 8. Arriendo de inmuebles adquiridos",
+  "hours_per_day": 8,
+  "unit": "horas-persona; día productivo convencional, no calendario",
+  "confidence": "baja: no hay horas reales ni código de Casabra inspeccionado; hipótesis H por tarea",
+  "previous_estimate": {
+    "hours_min": 360,
+    "hours_max": 570,
+    "type": "estimación preliminar gruesa, no tiempo real",
+    "calculation_note": "Subtotal previo 316–494 h más aproximadamente 15 % genérico; se conserva como antecedente, no se suma ni se usa como ancla."
+  },
+  "references": {
+    "H": {
+      "days": 1,
+      "type": "hipótesis técnica, no ancla histórica",
+      "source": "juicio técnico por entregable, complejidad e integración",
+      "shape": "análisis/implementación/verificación de un día comparable; no equivale a productividad medida"
+    },
+    "A1": {
+      "days": 0.5,
+      "type": "referencia importada no verificada; no usada para cuantificar tareas de este módulo",
+      "source": "S9.2 / RED-3596",
+      "shape": "UI wiring con reutilización, sin dinero/PII; analogía insuficiente para construir pantallas nuevas"
+    },
+    "A2": {
+      "days": 1,
+      "type": "referencia importada no verificada; no usada para cuantificar tareas de este módulo",
+      "source": "RED-765 / PR 766",
+      "shape": "consultas y documento con patrones existentes; no hay patrón de arriendo/pago verificado"
+    }
+  },
+  "mode_factors": {
+    "M0": {"min": 1, "max": 1},
+    "M1": {"min": 1.5, "max": 2}
+  },
+  "formula": "horas = 8 horas/día × unidades H × factor del modo; el factor M1 se aplica una sola vez; TDD y pruebas propias están dentro de cada tarea",
+  "module_totals": {
+    "AN": {"hours_min": 8, "hours_max": 16},
+    "UX": {"hours_min": 20, "hours_max": 32},
+    "BE": {"hours_min": 195, "hours_max": 336},
+    "FE": {"hours_min": 114, "hours_max": 204},
+    "OPS": {"hours_min": 24, "hours_max": 48},
+    "QA": {"hours_min": 24, "hours_max": 40},
+    "REL": {"hours_min": 6, "hours_max": 16},
+    "module_on_existing_base": {"hours_min": 391, "hours_max": 692},
+    "shared_base_if_missing_conditional": {"hours_min": 48, "hours_max": 96},
+    "module_plus_shared_base_if_missing": {"hours_min": 439, "hours_max": 788}
+  },
+  "tasks": [
+    {"id":"AN-AR-01","layer":"AN","mode":"M0","ref":"H","base_units_min":1,"base_units_max":2,"factor_min":1,"factor_max":1,"hours_min":8,"hours_max":16,"reason":"Acordar criterios, estados de cobro/mora, pagos parciales/reversos y canales antes de construir."},
+    {"id":"UX-AR-01","layer":"UX","mode":"M0","ref":"H","base_units_min":2.5,"base_units_max":4,"factor_min":1,"factor_max":1,"hours_min":20,"hours_max":32,"reason":"Diseñar los flujos responsivos del administrador y arrendatario, incluidos estados de pago y error."},
+    {"id":"BE-AR-01","layer":"BE","mode":"M1","ref":"H","base_units_min":1.25,"base_units_max":1.75,"factor_min":1.5,"factor_max":2,"hours_min":15,"hours_max":28,"reason":"Modelos y migraciones de inmueble, contrato, obligaciones y estados; patrón no verificado."},
+    {"id":"BE-AR-02","layer":"BE","mode":"M1","ref":"H","base_units_min":2,"base_units_max":2.5,"factor_min":1.5,"factor_max":2,"hours_min":24,"hours_max":40,"reason":"Alistamiento, anuncio manual, interesados, documentos y evaluación con permisos."},
+    {"id":"BE-AR-03","layer":"BE","mode":"M1","ref":"H","base_units_min":2,"base_units_max":2.5,"factor_min":1.5,"factor_max":2,"hours_min":24,"hours_max":40,"reason":"Formalización de contrato, integración de firma si existe, inventario y entrega."},
+    {"id":"BE-AR-04","layer":"BE","mode":"M1","ref":"H","base_units_min":2,"base_units_max":2.5,"factor_min":1.5,"factor_max":2,"hours_min":24,"hours_max":40,"reason":"Calendario de obligaciones, saldos, vencimientos y mora bajo reglas por acordar."},
+    {"id":"BE-AR-05","layer":"BE","mode":"M1","ref":"H","base_units_min":2.5,"base_units_max":3,"factor_min":1.5,"factor_max":2,"hours_min":30,"hours_max":48,"reason":"Integración de pasarela nueva, webhooks autenticados, idempotencia, reintentos y estados."},
+    {"id":"BE-AR-06","layer":"BE","mode":"M1","ref":"H","base_units_min":1.5,"base_units_max":2,"factor_min":1.5,"factor_max":2,"hours_min":18,"hours_max":32,"reason":"Registro manual de pagos externos, aplicación al saldo y comprobante interno confirmado."},
+    {"id":"BE-AR-07","layer":"BE","mode":"M1","ref":"H","base_units_min":1,"base_units_max":1.75,"factor_min":1.5,"factor_max":2,"hours_min":12,"hours_max":28,"reason":"Programación de recordatorios y avisos, evitando duplicados o mensajes contradictorios."},
+    {"id":"BE-AR-08","layer":"BE","mode":"M1","ref":"H","base_units_min":1.5,"base_units_max":1.75,"factor_min":1.5,"factor_max":2,"hours_min":18,"hours_max":28,"reason":"API privada del arrendatario para contrato, saldo, historial, pagos y recibos."},
+    {"id":"BE-AR-09","layer":"BE","mode":"M1","ref":"H","base_units_min":1.5,"base_units_max":1.75,"factor_min":1.5,"factor_max":2,"hours_min":18,"hours_max":28,"reason":"Consultas de tablero y agregaciones cotejadas con obligaciones/transacciones."},
+    {"id":"BE-AR-10","layer":"BE","mode":"M1","ref":"H","base_units_min":1,"base_units_max":1.5,"factor_min":1.5,"factor_max":2,"hours_min":12,"hours_max":24,"reason":"Permisos por rol/contrato y auditoría de cambios financieros y contractuales."},
+    {"id":"FE-AR-01","layer":"FE","mode":"M1","ref":"H","base_units_min":2,"base_units_max":2.5,"factor_min":1.5,"factor_max":2,"hours_min":24,"hours_max":40,"reason":"Pantallas de alistamiento, publicación manual, interesados y evaluación."},
+    {"id":"FE-AR-02","layer":"FE","mode":"M1","ref":"H","base_units_min":1.5,"base_units_max":2,"factor_min":1.5,"factor_max":2,"hours_min":18,"hours_max":32,"reason":"Vistas de contrato, firma existente si aplica, inventario y entrega/devolución."},
+    {"id":"FE-AR-03","layer":"FE","mode":"M1","ref":"H","base_units_min":2,"base_units_max":2.5,"factor_min":1.5,"factor_max":2,"hours_min":24,"hours_max":40,"reason":"Portal adaptable con contrato, obligaciones, saldo, historial y vencimientos."},
+    {"id":"FE-AR-04","layer":"FE","mode":"M1","ref":"H","base_units_min":1.5,"base_units_max":2,"factor_min":1.5,"factor_max":2,"hours_min":18,"hours_max":32,"reason":"Inicio de pago y visualización segura del estado de la pasarela."},
+    {"id":"FE-AR-05","layer":"FE","mode":"M1","ref":"H","base_units_min":0.5,"base_units_max":0.75,"factor_min":1.5,"factor_max":2,"hours_min":6,"hours_max":12,"reason":"Consulta/descarga de comprobantes internos únicamente para pagos confirmados."},
+    {"id":"FE-AR-06","layer":"FE","mode":"M1","ref":"H","base_units_min":1.5,"base_units_max":2,"factor_min":1.5,"factor_max":2,"hours_min":18,"hours_max":32,"reason":"Tablero de cartera con filtros, estados al día/mora, ocupación e ingresos."},
+    {"id":"FE-AR-07","layer":"FE","mode":"M1","ref":"H","base_units_min":0.5,"base_units_max":1,"factor_min":1.5,"factor_max":2,"hours_min":6,"hours_max":16,"reason":"Avisos y estado de obligaciones dentro de la sesión autenticada."},
+    {"id":"OPS-AR-01","layer":"OPS","mode":"M1","ref":"H","base_units_min":2,"base_units_max":3,"factor_min":1.5,"factor_max":2,"hours_min":24,"hours_max":48,"reason":"Infraestructura AWS incremental para secretos/webhooks, colas/scheduler, logs, alarmas y despliegue."},
+    {"id":"QA-AR-01","layer":"QA","mode":"M1","ref":"H","base_units_min":2,"base_units_max":2.5,"factor_min":1.5,"factor_max":2,"hours_min":24,"hours_max":40,"reason":"Pruebas transversales de extremo a extremo, sandbox, seguridad de acceso y regresión; no repite unitarias/TDD."},
+    {"id":"REL-AR-01","layer":"REL","mode":"M1","ref":"H","base_units_min":0.5,"base_units_max":1,"factor_min":1.5,"factor_max":2,"hours_min":6,"hours_max":16,"reason":"Checklist, documentación y transferencia para desplegar un flujo financiero con seguridad."},
+    {"id":"SH-AR-01","layer":"SHARED","mode":"M1","ref":"H","base_units_min":4,"base_units_max":6,"factor_min":1.5,"factor_max":2,"hours_min":48,"hours_max":96,"conditional":true,"included_in_module_total":false,"reason":"Solo si inspección confirma que faltan base API/web, login, RDS, S3, ambientes, pipeline, secretos y observabilidad; no cobrar si ya existen."}
+  ],
+  "contingency": {
+    "generic_hours_min": 0,
+    "generic_hours_max": 0,
+    "note": "No se añade buffer porcentual: M1 ya incorpora una sola vez revisión/validación reforzada. Si incompatibilidad acotada de contrato o pasarela obliga a corregir, reevaluar tarea afectada y considerar hasta 0.5 d solo bajo esa condición."
+  },
+  "excluded_external_costs": [
+    "consumo AWS y aprovisionamiento facturado",
+    "tarifas transaccionales y mensualidad de pasarela",
+    "correo/SMS u otros proveedores de notificación",
+    "esperas por aprobaciones, accesos, disponibilidad de terceros o decisiones de negocio"
+  ]
+}
