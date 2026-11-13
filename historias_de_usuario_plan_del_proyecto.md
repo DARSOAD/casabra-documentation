@@ -89,11 +89,15 @@
 ## Fase 3: Crecimiento
 
 ### Módulo 10. Pagos y utilidades
+[Épica técnica y estimación](epicas%20y%20tiempos/pagos-utilidades-epica.md) · [Criterios Gherkin propuestos](epicas%20y%20tiempos/pagos-utilidades-criterios-aceptacion.md).
+
 * **HU-27:** **COMO** contador, **QUIERO** consultar y clasificar los costos e ingresos de cada inmueble o proyecto, incluidos los cánones cobrados en arriendo, **PARA** conocer la rentabilidad real sin volver a registrar pagos ya conciliados en la operación.
 * **HU-28:** **COMO** gerente, **QUIERO** calcular y registrar el retorno y la rentabilidad de cada inmueble según sus costos e ingresos, **PARA** evaluar el resultado de cada ruta de negocio.
 * **HU-29:** **COMO** contador, **QUIERO** generar facturas y soportes para la DIAN desde el mismo sistema, **PARA** no digitar la información dos veces.
 
 ### Módulo 11. Portal del cliente
+[Épica técnica y estimación](epicas%20y%20tiempos/portal-cliente-epica.md) · [Criterios Gherkin propuestos](epicas%20y%20tiempos/portal-cliente-criterios-aceptacion.md).
+
 * **HU-30:** **COMO** propietario original, **QUIERO** ver el avance de la obra, mis documentos y los resultados que la compañía haya definido compartir conmigo, **PARA** conocer el estado de mi operación sin confundirlo con la gestión del activo ya adquirido.
 * **HU-31:** **COMO** propietario original, **QUIERO** recibir notificaciones sobre los hitos de mi operación que la compañía haya definido compartir (por ejemplo, formalización o pago de la adquisición), **PARA** estar informado sin acceder a la gestión interna del activo ya adquirido.
 * **HU-32:** **COMO** gerente, **QUIERO** reportes consolidados de ingresos, ocupación y rentabilidad, **PARA** tomar decisiones de inversión con datos.
