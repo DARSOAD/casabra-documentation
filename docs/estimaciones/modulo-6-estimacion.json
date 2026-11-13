@@ -1,0 +1,472 @@
+{
+  "module": "Módulo 6. Proyectos de obra",
+  "method": "estimate-task local",
+  "hours_per_day": 8,
+  "confidence": "baja: sin horas reales Casabra, implementación compartida ni criterios de obra aprobados",
+  "formula": "ceil(hours_per_day * reference_days * base_units * risk_factor), por extremo; TDD y revisión incluidos una vez",
+  "previous_estimate": null,
+  "references": {
+    "A1": {
+      "days": 0.5,
+      "source": "S9.2 / RED-3596",
+      "evidence": "Referencia importada no verificada; conexión UI a endpoint con errores y pruebas, analogía parcial"
+    },
+    "H": {
+      "days": 1,
+      "evidence": "Unidad de hipótesis técnica por entregables, no ancla medida"
+    }
+  },
+  "layers": {
+    "definition": "Definición",
+    "backend": "Backend",
+    "frontend": "Frontend",
+    "ops": "Infraestructura incremental y observabilidad",
+    "qa": "Validación transversal",
+    "release": "Entrega"
+  },
+  "tasks": [
+    {
+      "id": "AN-OB-01",
+      "layer": "definition",
+      "title": "Definir planificación, costos y permisos",
+      "stories": [
+        "HU-16",
+        "HU-17",
+        "HU-18",
+        "HU-19"
+      ],
+      "mode": "M0",
+      "ref": "H",
+      "base_units_min": 1,
+      "base_units_max": 2,
+      "risk_min": 1,
+      "risk_max": 1,
+      "hours_min": 8,
+      "hours_max": 16,
+      "reason": "Cerrar reglas y contratos sin implementación.",
+      "activities": [
+        "Definir partidas, actividades, responsables, avance semanal, definición de atraso y fuente de costo ejecutado.",
+        "Acordar acceso por proyecto, estados propuestos, retención, límites de archivos y criterios Gherkin; registrar ADR y supuestos sin presentarlos como aprobaciones."
+      ],
+      "technologies": "Markdown, Gherkin, OpenAPI y ADR en Git"
+    },
+    {
+      "id": "BE-OB-01",
+      "layer": "backend",
+      "title": "Modelo de proyecto y migraciones",
+      "stories": [
+        "HU-16",
+        "HU-17",
+        "HU-18",
+        "HU-19"
+      ],
+      "mode": "M1",
+      "ref": "H",
+      "base_units_min": 1.25,
+      "base_units_max": 2,
+      "risk_min": 1.5,
+      "risk_max": 2,
+      "hours_min": 15,
+      "hours_max": 32,
+      "reason": "Relaciones nuevas, importes y migraciones.",
+      "activities": [
+        "Modelar proyecto, vínculo a inmueble, responsables, partidas, cronograma, reportes, gastos operativos, archivos e historial; usar Decimal para dinero.",
+        "Agregar índices, claves foráneas y restricción de un proyecto activo por inmueble como supuesto de cotización.",
+        "TDD de integridad, unicidad y migración sobre datos previos; no duplicar modelos de adquisición ni usuarios."
+      ],
+      "technologies": "SQLAlchemy 2, Alembic, PostgreSQL en RDS, pytest y Testcontainers"
+    },
+    {
+      "id": "BE-OB-02",
+      "layer": "backend",
+      "title": "Proyecto, presupuesto y cronograma base",
+      "stories": [
+        "HU-16"
+      ],
+      "mode": "M1",
+      "ref": "H",
+      "base_units_min": 1.5,
+      "base_units_max": 2.5,
+      "risk_min": 1.5,
+      "risk_max": 2,
+      "hours_min": 18,
+      "hours_max": 40,
+      "reason": "Dinero y fechas con validación de elegibilidad y línea base.",
+      "activities": [
+        "Proponer GET/POST /api/v1/obras y GET/PATCH /obras/{id}; verificar inmueble Adquirido, ruta definida y adecuaciones indicadas, sin modificar adquisición/ruta.",
+        "Gestionar partidas con cantidad y costo unitario, actividades con inicio/fin y responsable interno; estados propuestos Planificado, En ejecución, Finalizado y Cancelado.",
+        "Al iniciar, congelar presupuesto y fechas de referencia; actualizaciones operativas conservan la base. Validar fechas, importes no negativos, moneda única COP propuesta, responsables y conflictos de versión.",
+        "TDD de redondeo, sumatoria, inicio inválido y doble creación; sin Gantt editable, ruta crítica, dependencias entre actividades ni rebaselining.",
+        "Verificar cierre solo con actividades base al 100%, cancelación motivada y transiciones permitidas; conservar fecha real de cierre sin publicar el inmueble."
+      ],
+      "technologies": "FastAPI, Pydantic, SQLAlchemy, Decimal, pytest y HTTPX"
+    },
+    {
+      "id": "BE-OB-03",
+      "layer": "backend",
+      "title": "Gastos operativos y comparación presupuestal",
+      "stories": [
+        "HU-19 (fuente necesaria de costo real, supuesto)"
+      ],
+      "mode": "M1",
+      "ref": "H",
+      "base_units_min": 1.25,
+      "base_units_max": 2,
+      "risk_min": 1.5,
+      "risk_max": 2,
+      "hours_min": 15,
+      "hours_max": 32,
+      "reason": "Montos y correcciones trazables sin doble registro.",
+      "activities": [
+        "Proponer GET/POST /api/v1/obras/{id}/gastos y anulación motivada; registrar partida, fecha, importe y descripción sin ejecutar pagos.",
+        "Mantener identificador estable y clave de idempotencia; sumar gastos vigentes y conservar anulaciones auditadas. Son costos operativos declarados, no conciliados contablemente.",
+        "TDD de reenvío, precisión, gasto anulado, partida ajena y concurrencia. No incluir facturación, compras, proveedores, nómina ni integración automática con módulo 10; definir contrato de IDs para futura integración."
+      ],
+      "technologies": "FastAPI, PostgreSQL, Decimal, pytest"
+    },
+    {
+      "id": "BE-OB-04",
+      "layer": "backend",
+      "title": "Reportes semanales y avance por actividad",
+      "stories": [
+        "HU-17"
+      ],
+      "mode": "M1",
+      "ref": "H",
+      "base_units_min": 1.25,
+      "base_units_max": 2,
+      "risk_min": 1.5,
+      "risk_max": 2,
+      "hours_min": 15,
+      "hours_max": 32,
+      "reason": "Historial, porcentajes y cargas repetidas desde campo.",
+      "activities": [
+        "Proponer GET/POST /api/v1/obras/{id}/avances; registrar semana, comentario y porcentaje acumulado por actividad, vinculando fotos habilitadas por BE-OB-05.",
+        "Mantener una versión vigente por semana y conservar correcciones con autor/fecha; avance global propuesto = promedio simple de actividades de la línea base.",
+        "TDD de límites 0–100, actividad ajena, semana duplicada y corrección concurrente. Sin reporte, mostrar Sin reporte; un dato anterior conserva su fecha, sin inventar avance actual."
+      ],
+      "technologies": "FastAPI, SQLAlchemy, Pydantic, pytest"
+    },
+    {
+      "id": "BE-OB-05",
+      "layer": "backend",
+      "title": "Fotos y documentos privados de obra",
+      "stories": [
+        "HU-17",
+        "HU-18"
+      ],
+      "mode": "M1",
+      "ref": "H",
+      "base_units_min": 2,
+      "base_units_max": 3,
+      "risk_min": 1.5,
+      "risk_max": 2,
+      "hours_min": 24,
+      "hours_max": 48,
+      "reason": "Carga privada, validación, cuarentena y versiones sin patrón acreditado.",
+      "activities": [
+        "Proponer solicitudes de carga, confirmación y descarga autorizada bajo /api/v1/obras/{id}/archivos; carga directa a S3 con URL temporal y límites acordados.",
+        "Registrar tipo Foto, Licencia o Permiso, metadatos, versiones y vínculos a reporte/proyecto; reemplazar sin perder versión anterior. No validar suficiencia jurídica de licencias.",
+        "Implementar validación de tamaño/tipo real, cuarentena y adaptador al motor de análisis de archivos: solo habilitar archivos aceptados. Contemplar reintentos y eventos duplicados.",
+        "TDD de ID de proyecto ajeno, URL expirada, archivo rechazado, carga interrumpida y confirmación repetida. Sin OCR, video, edición de imágenes ni geolocalización."
+      ],
+      "technologies": "FastAPI, boto3, S3 privado, worker Python, pytest y dobles de almacenamiento/análisis"
+    },
+    {
+      "id": "BE-OB-06",
+      "layer": "backend",
+      "title": "Indicadores de retraso y sobrecosto",
+      "stories": [
+        "HU-19"
+      ],
+      "mode": "M1",
+      "ref": "H",
+      "base_units_min": 1.25,
+      "base_units_max": 2,
+      "risk_min": 1.5,
+      "risk_max": 2,
+      "hours_min": 15,
+      "hours_max": 32,
+      "reason": "Reglas de comparación con datos incompletos y divisiones por cero.",
+      "activities": [
+        "Proponer GET /api/v1/obras/indicadores con filtros por estado y responsable; usar cronograma base y gastos vigentes, sin duplicar importes por joins con fotos/reportes.",
+        "Marcar actividad atrasada si su fin base ya pasó y su último avance conocido es menor a 100%; sin reporte marcar Avance sin confirmar, no asumir avance cero. Proyecto atrasado si tiene alguna actividad atrasada confirmada.",
+        "Sobrecosto = máximo(costo registrado menos presupuesto base, 0); mostrar desviación porcentual solo si base mayor que cero. Sin gastos, mostrar Sin costos registrados, no gasto real cero.",
+        "TDD de límite de fecha en zona acordada, presupuesto cero, gasto anulado, múltiples reportes y finalización tardía; sin proyección de costo final, valor ganado ni alertas externas."
+      ],
+      "technologies": "FastAPI, PostgreSQL, SQLAlchemy, datetime/zoneinfo, pytest"
+    },
+    {
+      "id": "BE-OB-07",
+      "layer": "backend",
+      "title": "Permisos por proyecto y auditoría",
+      "stories": [
+        "HU-16",
+        "HU-17",
+        "HU-18",
+        "HU-19",
+        "HU-33 (dependencia transversal)"
+      ],
+      "mode": "M1",
+      "ref": "H",
+      "base_units_min": 0.75,
+      "base_units_max": 1.25,
+      "risk_min": 1.5,
+      "risk_max": 2,
+      "hours_min": 9,
+      "hours_max": 20,
+      "reason": "Rol jefe de obra, aislamiento por proyecto y cambios monetarios.",
+      "activities": [
+        "Extender política existente con jefe de obra asignado para operar y gerente para consulta global; permisos de crear proyecto y asignar responsables requieren decisión en AN-OB-01.",
+        "Registrar auditoría atómica para cambios de presupuesto, fechas, avance, gasto y archivo; impedir acceso de propietario original/arrendatario a gestión interna.",
+        "Probar matriz de roles/recurso y asignación no autorizada mediante política común. Sin crear login ni consola de administración; habilitación del rol jefe de obra se documenta como dependencia de HU-33."
+      ],
+      "technologies": "Dependencias FastAPI, RDS y pytest"
+    },
+    {
+      "id": "FE-OB-01",
+      "layer": "frontend",
+      "title": "Listado, ficha y planificación de obra",
+      "stories": [
+        "HU-16"
+      ],
+      "mode": "M1",
+      "ref": "A1",
+      "base_units_min": 2.5,
+      "base_units_max": 4,
+      "risk_min": 1.5,
+      "risk_max": 2,
+      "hours_min": 15,
+      "hours_max": 32,
+      "reason": "Analogía parcial A1: varias vistas con presupuesto y responsables.",
+      "activities": [
+        "Crear lista/ficha y formularios de proyecto, partidas y cronograma tabular con selector de inmueble elegible y usuarios autorizados.",
+        "Mostrar presupuesto calculado, fechas base frente a actuales y confirmación de inicio; proteger acciones según permiso manteniendo autoridad del backend.",
+        "TDD de validación, vacío/error, conflicto de edición y uso móvil/teclado; sin editor de Gantt ni app nativa."
+      ],
+      "technologies": "Next.js, TypeScript, React Hook Form, Zod, Vitest y Testing Library"
+    },
+    {
+      "id": "FE-OB-02",
+      "layer": "frontend",
+      "title": "Avance semanal con fotografías desde celular",
+      "stories": [
+        "HU-17"
+      ],
+      "mode": "M1",
+      "ref": "A1",
+      "base_units_min": 2.5,
+      "base_units_max": 4,
+      "risk_min": 1.5,
+      "risk_max": 2,
+      "hours_min": 15,
+      "hours_max": 32,
+      "reason": "Formulario móvil, progreso de carga y errores de conectividad.",
+      "activities": [
+        "Integrar reporte por semana, porcentajes por actividad y galería en ficha FE-OB-01; seleccionar fotos del dispositivo o cámara cuando el navegador lo permita.",
+        "Mostrar carga/validación/rechazo y reintento por archivo sin duplicar reporte; conservar fecha y versión del avance.",
+        "TDD de carga fallida, guardado repetido y porcentaje inválido. Uso conectado; sin modo offline, sincronización en segundo plano ni promesa de recuperación tras cerrar navegador."
+      ],
+      "technologies": "Next.js, API File del navegador, carga S3 temporal, Testing Library"
+    },
+    {
+      "id": "FE-OB-03",
+      "layer": "frontend",
+      "title": "Licencias, permisos y costos registrados",
+      "stories": [
+        "HU-18",
+        "HU-19 (registro manual supuesto)"
+      ],
+      "mode": "M1",
+      "ref": "A1",
+      "base_units_min": 2,
+      "base_units_max": 3,
+      "risk_min": 1.5,
+      "risk_max": 2,
+      "hours_min": 12,
+      "hours_max": 24,
+      "reason": "Dos paneles reutilizan ficha y componente de archivos.",
+      "activities": [
+        "Reutilizar carga de FE-OB-02 para documentos con tipo, versión, estado de validación y descarga autorizada.",
+        "Agregar tabla/formulario de gastos por partida y anulación motivada; distinguir presupuesto de costo registrado y de pago confirmado.",
+        "TDD de archivo rechazado, enlace vencido, importe inválido y anulación visible. Sin emisión de licencias ni módulo contable."
+      ],
+      "technologies": "Next.js, TypeScript, Zod, Testing Library"
+    },
+    {
+      "id": "FE-OB-04",
+      "layer": "frontend",
+      "title": "Tablero gerencial de obra",
+      "stories": [
+        "HU-19"
+      ],
+      "mode": "M1",
+      "ref": "A1",
+      "base_units_min": 1.5,
+      "base_units_max": 2.5,
+      "risk_min": 1.5,
+      "risk_max": 2,
+      "hours_min": 9,
+      "hours_max": 20,
+      "reason": "Indicadores restringidos que deben distinguir ausencia de datos.",
+      "activities": [
+        "Construir tabla y resumen por proyecto con presupuesto, costo registrado, desviación, avance y atraso; filtrar por estado/responsable y navegar al detalle.",
+        "Explicar base de cálculo y fecha del último reporte; distinguir Sin reporte, Sin costos registrados, cero y error.",
+        "TDD de filtros, permiso gerencial y casos sin denominador; sin exportación PDF/Excel ni BI externo."
+      ],
+      "technologies": "Next.js, TypeScript, componentes accesibles y Testing Library"
+    },
+    {
+      "id": "OPS-OB-01",
+      "layer": "ops",
+      "title": "Almacenamiento y análisis de archivos",
+      "stories": [
+        "HU-17",
+        "HU-18"
+      ],
+      "mode": "M1",
+      "ref": "H",
+      "base_units_min": 1,
+      "base_units_max": 1.75,
+      "risk_min": 1.5,
+      "risk_max": 2,
+      "hours_min": 12,
+      "hours_max": 28,
+      "reason": "S3 privado, eventos y despliegue del motor de análisis.",
+      "activities": [
+        "Configurar prefijos/permisos S3, CORS acotado, cifrado, eventos de cuarentena y recuperación de cargas huérfanas con retención acordada.",
+        "Configurar motor de análisis propuesto ClamAV en worker y actualización de firmas, permisos mínimos y reintentos; verificar archivo limpio/rechazado en staging.",
+        "Reutilizar base AWS existente. Si módulo 2 ya entrega motor de análisis, descontar trabajo común al consolidar; no instalar/cobrar un motor por módulo."
+      ],
+      "technologies": "S3/KMS, IAM, ECS/worker ClamAV, SQS, CDK/CloudFormation"
+    },
+    {
+      "id": "OPS-OB-02",
+      "layer": "ops",
+      "title": "Observabilidad de archivos e indicadores",
+      "stories": [
+        "HU-17",
+        "HU-18",
+        "HU-19"
+      ],
+      "mode": "M1",
+      "ref": "H",
+      "base_units_min": 0.5,
+      "base_units_max": 1,
+      "risk_min": 1.5,
+      "risk_max": 2,
+      "hours_min": 6,
+      "hours_max": 16,
+      "reason": "Fallos de procesamiento y consultas sin exponer documentos.",
+      "activities": [
+        "Extender logs, métricas y alarmas para cargas rechazadas/atascadas, fallos de análisis y latencia del tablero.",
+        "Verificar alarmas de prueba y redacción de URLs temporales/datos personales; mantener auditoría de negocio en RDS separada de logs."
+      ],
+      "technologies": "CloudWatch, SNS y logs estructurados"
+    },
+    {
+      "id": "QA-OB-01",
+      "layer": "qa",
+      "title": "Recorrido de obra y acceso desde móvil",
+      "stories": [
+        "HU-16",
+        "HU-17",
+        "HU-18",
+        "HU-19"
+      ],
+      "mode": "M1",
+      "ref": "H",
+      "base_units_min": 1,
+      "base_units_max": 1.5,
+      "risk_min": 1.5,
+      "risk_max": 2,
+      "hours_min": 12,
+      "hours_max": 24,
+      "reason": "Validación de flujo real entre capas y roles.",
+      "activities": [
+        "Ejecutar Gherkin: inmueble elegible → proyecto/presupuesto → inicio → avance/fotos → permisos → costo → tablero.",
+        "Comprobar uso móvil/teclado, conexión interrumpida y acceso denegado de otro jefe de obra/propietario; no duplicar pruebas unitarias de cada tarea."
+      ],
+      "technologies": "Playwright, staging y datos sintéticos"
+    },
+    {
+      "id": "QA-OB-02",
+      "layer": "qa",
+      "title": "Conciliación de cifras y recuperación",
+      "stories": [
+        "HU-17",
+        "HU-18",
+        "HU-19"
+      ],
+      "mode": "M1",
+      "ref": "H",
+      "base_units_min": 1,
+      "base_units_max": 1.5,
+      "risk_min": 1.5,
+      "risk_max": 2,
+      "hours_min": 12,
+      "hours_max": 24,
+      "reason": "Integridad entre RDS, S3, análisis de archivos y tablero.",
+      "activities": [
+        "Conciliar presupuesto/costo/avance con conjunto conocido, probar cortes de fecha y ausencia de multiplicación por documentos o reportes.",
+        "Ensayar evento duplicado, caída del worker, acceso antes del análisis, aplicación de migración y recuperación con evidencias en staging.",
+        "Revisar consultas y cargas con volumen/límites acordados; no incluye pentest externo ni certificación de rendimiento."
+      ],
+      "technologies": "pytest/HTTPX, PostgreSQL, S3 y CloudWatch en staging"
+    },
+    {
+      "id": "REL-OB-01",
+      "layer": "release",
+      "title": "Despliegue y aceptación operativa",
+      "stories": [
+        "HU-16",
+        "HU-17",
+        "HU-18",
+        "HU-19"
+      ],
+      "mode": "M1",
+      "ref": "H",
+      "base_units_min": 0.5,
+      "base_units_max": 1,
+      "risk_min": 1.5,
+      "risk_max": 2,
+      "hours_min": 6,
+      "hours_max": 16,
+      "reason": "Activación de migraciones, permisos y procesamiento.",
+      "activities": [
+        "Desplegar mediante pipeline existente y verificar ficha, carga privada y tablero antes de habilitar operación.",
+        "Entregar OpenAPI, ADR, guía de jefe de obra/gerente, evidencias Gherkin y procedimiento de recuperación; separar espera de aceptación de horas-persona."
+      ],
+      "technologies": "Git, OpenAPI, pipeline AWS y Markdown"
+    }
+  ],
+  "shared_base_source": "epicas y tiempos/ficha-inmueble-epica.md, sección 6",
+  "shared_base_if_pending": {
+    "BASE-01": [
+      36,
+      80
+    ],
+    "BASE-02": [
+      12,
+      32
+    ],
+    "BASE-03": [
+      12,
+      24
+    ],
+    "BASE-04": [
+      12,
+      24
+    ],
+    "BASE-05": [
+      6,
+      16
+    ]
+  },
+  "contingency_hours": {
+    "min": 0,
+    "max": 4,
+    "condition": "ajuste acotado de identificadores o campos de elegibilidad en contrato entregado por módulo 2",
+    "owner": "responsable de integración"
+  }
+}

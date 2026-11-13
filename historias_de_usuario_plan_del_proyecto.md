@@ -5,6 +5,8 @@
 ## Fase 1: Base
 
 ### Módulo 1. Onboarding del cliente
+[Épica técnica y estimación](epicas%20y%20tiempos/onboarding-cliente-epica.md) · [Criterios mínimos de aceptación en Gherkin](epicas%20y%20tiempos/onboarding-cliente-criterios-aceptacion.md).
+
 * **HU-01:** **COMO** propietario, **QUIERO** registrarme desde mi celular e indicar qué inmueble quiero venderle a la compañía, **PARA** iniciar el proceso de evaluación de compra sin desplazarme ni llenar papeles.
 * **HU-02:** **COMO** propietario, **QUIERO** aceptar de forma clara cómo se usarán mis datos personales, **PARA** tener certeza de que mi información está protegida y de que mi autorización es consciente.
 * **HU-03:** **COMO** oficial de cumplimiento, **QUIERO** que el sistema verifique la identidad del cliente y consulte listas restrictivas al registrarse, **PARA** prevenir riesgos de lavado de activos.
@@ -27,6 +29,8 @@
 * **HU-11:** **COMO** titular de datos, **QUIERO** poder consultar, corregir o pedir la eliminación de mis datos, **PARA** ejercer mis derechos sin trámites complicados.
 
 ### Módulo 5. CRM
+[Épica técnica y estimación](epicas%20y%20tiempos/crm-epica.md) · [Criterios Gherkin propuestos](epicas%20y%20tiempos/crm-criterios-aceptacion.md).
+
 * **HU-12:** **COMO** asesor comercial, **QUIERO** ver en una ficha el estado de cada cliente (contactado, en evaluación, contrato firmado), **PARA** saber a quién darle seguimiento hoy.
 * **HU-13:** **COMO** asesor comercial, **QUIERO** registrar llamadas, visitas y compromisos con el cliente, **PARA** que cualquier compañero pueda continuar la conversación sin perder contexto.
 * **HU-14:** **COMO** asesor comercial, **QUIERO** recibir recordatorios de seguimientos pendientes, **PARA** no perder oportunidades por olvido.
@@ -37,17 +41,23 @@
 ## Fase 2: Operación
 
 ### Módulo 6. Proyectos de obra
+[Épica técnica y estimación](epicas%20y%20tiempos/proyectos-obra-epica.md) · [Criterios Gherkin propuestos](epicas%20y%20tiempos/proyectos-obra-criterios-aceptacion.md).
+
 * **HU-16:** **COMO** jefe de obra, **QUIERO** crear un proyecto con presupuesto, cronograma y responsables, **PARA** planear la remodelación antes de empezar.
 * **HU-17:** **COMO** jefe de obra, **QUIERO** subir fotos y registrar el avance semanal desde el sitio, **PARA** mantener el proyecto actualizado sin trabajo doble en oficina.
 * **HU-18:** **COMO** jefe de obra, **QUIERO** adjuntar las licencias y permisos del proyecto, **PARA** tener a la mano lo exigido si llega una inspección.
 * **HU-19:** **COMO** gerente, **QUIERO** ver qué proyectos van retrasados o sobre presupuesto, **PARA** intervenir a tiempo.
 
 ### Módulo 7. Contratos y firma electrónica
+[Épica técnica y estimación](epicas%20y%20tiempos/contratos-firma-epica.md) · [Criterios Gherkin propuestos](epicas%20y%20tiempos/contratos-firma-criterios-aceptacion.md).
+
 * **HU-20:** **COMO** abogado de la empresa, **QUIERO** manejar plantillas de contrato para adquirir, arrendar y vender inmuebles, **PARA** que cada operación tenga un estándar legal consistente.
 * **HU-21:** **COMO** contraparte de una operación, **QUIERO** revisar y firmar el contrato correspondiente desde el celular, **PARA** formalizar la operación sin ir a una oficina.
 * **HU-22:** **COMO** administrador, **QUIERO** que los contratos firmados queden archivados con su trazabilidad, **PARA** poder probar su validez si hay un conflicto.
 
 ### Módulo 8. Arriendo de inmuebles adquiridos
+[Épica técnica y estimación](epicas%20y%20tiempos/arriendo-inmuebles-epica.md) · [Criterios Gherkin propuestos](epicas%20y%20tiempos/arriendo-inmuebles-criterios-aceptacion.md).
+
 * **HU-34:** **COMO** gerente de activos, **QUIERO** asignar a arriendo un inmueble cuya adquisición ya fue completada, **PARA** iniciar su ciclo de explotación como activo de la compañía.
 * **HU-35:** **COMO** administrador de inmuebles, **QUIERO** registrar el estado de alistamiento, adecuaciones, disponibilidad, canon, depósitos, servicios incluidos y condiciones del inmueble, **PARA** saber cuándo está listo y con qué condiciones puede ofrecerse.
 * **HU-36:** **COMO** asesor de arriendos, **QUIERO** administrar la ficha comercial, fotografías, anuncios, enlaces y estado de publicación de cada inmueble disponible, **PARA** atraer interesados y mantener actualizada la oferta sin depender inicialmente de integraciones automáticas con portales externos.
@@ -62,6 +72,8 @@
 * **HU-54:** **COMO** arrendatario, **QUIERO** recibir y descargar el comprobante interno del canon cuando el pago esté confirmado, **PARA** contar con evidencia verificable de mi pago.
 
 ### Módulo 9. Venta de inmuebles adquiridos
+[Épica técnica y estimación](epicas%20y%20tiempos/venta-inmuebles-epica.md) · [Criterios Gherkin propuestos](epicas%20y%20tiempos/venta-inmuebles-criterios-aceptacion.md).
+
 * **HU-40:** **COMO** gerente de activos, **QUIERO** asignar a venta un inmueble cuya adquisición ya fue completada y registrar el precio objetivo, **PARA** iniciar su proceso de comercialización.
 * **HU-41:** **COMO** asesor de ventas, **QUIERO** preparar la ficha comercial con descripción, fotografías, precio, documentos disponibles y estado de alistamiento, **PARA** publicar una oferta completa y consistente.
 * **HU-42:** **COMO** asesor de ventas, **QUIERO** publicar y actualizar el inmueble en los canales comerciales definidos, **PARA** generar oportunidades y mantener vigente la información.

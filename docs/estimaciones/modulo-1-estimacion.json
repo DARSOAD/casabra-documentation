@@ -1,0 +1,30 @@
+{
+  "method": "estimate-task local",
+  "hours_per_day": 8,
+  "confidence": "baja: referencias importadas, proveedor y base técnica sin verificar",
+  "formula": "ceil(hours_per_day * reference_days * base_units * risk_factor), por extremo",
+  "references": {
+    "A1": {"days": 0.5, "type": "importada no verificada", "source": "S9.2 / RED-3596"},
+    "A2": {"days": 1, "type": "importada no verificada", "source": "RED-765 / PR 766"},
+    "H": {"days": 1, "type": "hipótesis técnica; no ancla medida"}
+  },
+  "tasks": [
+    {"id":"AN-ON-01","layer":"definition","mode":"M0","ref":"H","base_units_min":1,"base_units_max":2,"risk_min":1,"risk_max":1,"hours_min":8,"hours_max":16},
+    {"id":"BE-ON-01","layer":"backend","mode":"M1","ref":"H","base_units_min":1,"base_units_max":1.5,"risk_min":1.5,"risk_max":2,"hours_min":12,"hours_max":24},
+    {"id":"BE-ON-02","layer":"backend","mode":"M1","ref":"H","base_units_min":1.5,"base_units_max":2.5,"risk_min":1.5,"risk_max":2,"hours_min":18,"hours_max":40},
+    {"id":"BE-ON-03","layer":"backend","mode":"M1","ref":"A2","base_units_min":0.75,"base_units_max":1,"risk_min":1.5,"risk_max":2,"hours_min":9,"hours_max":16},
+    {"id":"BE-ON-04","layer":"backend","mode":"M1","ref":"H","base_units_min":1,"base_units_max":1.5,"risk_min":1.5,"risk_max":2,"hours_min":12,"hours_max":24},
+    {"id":"BE-ON-05","layer":"backend","mode":"M1","ref":"H","base_units_min":1.75,"base_units_max":3,"risk_min":1.5,"risk_max":2,"hours_min":21,"hours_max":48},
+    {"id":"BE-ON-06","layer":"backend","mode":"M1","ref":"H","base_units_min":1,"base_units_max":1.5,"risk_min":1.5,"risk_max":2,"hours_min":12,"hours_max":24},
+    {"id":"FE-ON-01","layer":"frontend","mode":"M1","ref":"A1","base_units_min":2,"base_units_max":3,"risk_min":1.5,"risk_max":2,"hours_min":12,"hours_max":24},
+    {"id":"FE-ON-02","layer":"frontend","mode":"M1","ref":"A1","base_units_min":1.5,"base_units_max":2,"risk_min":1.5,"risk_max":2,"hours_min":9,"hours_max":16},
+    {"id":"FE-ON-03","layer":"frontend","mode":"M1","ref":"A1","base_units_min":2.5,"base_units_max":5,"risk_min":1.5,"risk_max":2,"hours_min":15,"hours_max":40},
+    {"id":"OPS-ON-01","layer":"ops","mode":"M1","ref":"H","base_units_min":1,"base_units_max":1.5,"risk_min":1.5,"risk_max":2,"hours_min":12,"hours_max":24},
+    {"id":"OPS-ON-02","layer":"ops","mode":"M1","ref":"H","base_units_min":0.75,"base_units_max":1.25,"risk_min":1.5,"risk_max":2,"hours_min":9,"hours_max":20},
+    {"id":"QA-ON-01","layer":"qa","mode":"M1","ref":"H","base_units_min":0.75,"base_units_max":1.25,"risk_min":1.5,"risk_max":2,"hours_min":9,"hours_max":20},
+    {"id":"QA-ON-02","layer":"qa","mode":"M1","ref":"H","base_units_min":0.75,"base_units_max":1.25,"risk_min":1.5,"risk_max":2,"hours_min":9,"hours_max":20},
+    {"id":"REL-ON-01","layer":"release","mode":"M1","ref":"H","base_units_min":0.5,"base_units_max":1,"risk_min":1.5,"risk_max":2,"hours_min":6,"hours_max":16}
+  ],
+  "shared_base_if_pending": {"BASE-01":[36,80],"BASE-02":[12,32],"BASE-03":[12,24],"BASE-04":[12,24],"BASE-05":[6,16]},
+  "contingency_hours": {"min":0,"max":4,"condition":"discrepancia acotada con contrato del login/base","owner":"integrador de autenticación"}
+}
