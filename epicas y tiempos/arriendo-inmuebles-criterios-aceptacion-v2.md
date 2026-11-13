@@ -1,6 +1,6 @@
-# Módulo 8. Arriendo de inmuebles adquiridos — criterios propuestos
+# Módulo 8. Arriendo de inmuebles adquiridos — criterios propuestos v2
 
-**Estado: pendientes de validación; no son criterios aprobados.** Fuente: HU-34 a HU-39, HU-46, HU-47 y HU-51 a HU-54 de las [historias](../historias_de_usuario_plan_del_proyecto.md). Aplican los supuestos de la [épica](arriendo-inmuebles-epica.md): inmueble completo, un arrendatario principal, mensualidad, un proveedor/medio digital y servicios compartidos disponibles. Los escenarios verifican comportamiento, no fijan políticas legales ni se traducen mecánicamente a horas.
+**Estado: pendientes de validación; no son criterios aprobados.** Fuente: HU-34 a HU-39, HU-46, HU-47 y HU-51 a HU-54 de las [historias](../historias_de_usuario_plan_del_proyecto.md). Aplican los supuestos de la [épica](arriendo-inmuebles-epica-v2.md): inmueble completo, un arrendatario principal, mensualidad, un proveedor/medio digital y servicios compartidos disponibles. Los escenarios verifican comportamiento, no fijan políticas legales ni se traducen mecánicamente a horas.
 
 ## HU-34 y HU-35 — Alta y preparación
 

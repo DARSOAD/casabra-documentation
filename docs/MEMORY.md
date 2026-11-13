@@ -62,6 +62,19 @@ La lista exacta de requisitos documentales y datos obligatorios no está definid
 
 ## Supuestos técnicos pendientes
 
+### Versiones conservadas al resolver el merge de arriendos
+
+Por instrucción del usuario se conservan ambas estimaciones del módulo 8, sin combinarlas ni sumar sus horas:
+
+- [Original recibido en el merge](../epicas%20y%20tiempos/arriendo-inmuebles-epica.md), con [su cálculo](estimaciones/modulo-8-estimacion.json): 391–692 h sobre base funcional.
+- [Nuestra estimación v2](../epicas%20y%20tiempos/arriendo-inmuebles-epica-v2.md), con [su cálculo](estimaciones/modulo-8-estimacion-v2.json), [criterios propuestos propios](../epicas%20y%20tiempos/arriendo-inmuebles-criterios-aceptacion-v2.md) y [generador v2](estimaciones/generar_modulo_8_v2.py): 513–1.100 h con sus dependencias funcionales disponibles.
+
+Cada versión conserva sus supuestos, tareas y base compartida; no representan el mismo alcance ni una elección aprobada de cotización. El generador v2 solo escribe la épica v2 y no debe sobrescribir la original. El documento `tiempos estimados_modulo_arrendamientos.md` conserva el resumen recibido del merge y enlaza la versión original.
+
+El usuario también pidió usar v2 para nuestra estimación del módulo 9 si ya había otra. En los archivos e historial disponibles durante esta resolución solo se encontró nuestra estimación de venta; se conserva su nombre actual, sin inventar una versión anterior.
+
+### Decisiones aún no confirmadas
+
 Las propuestas de tecnología detallada, límites, retención, una sola oferta por solicitud, alcance de reemplazos documentales y horas estimadas están en la épica/ADR. No convertirlos en reglas de negocio confirmadas por el usuario. Reaperturas, contraofertas, renegociaciones y cambios de ruta posteriores requieren nuevo alcance.
 
 Al cambiar una regla, actualizar la épica, sus criterios y la memoria que corresponda. Mantener los ADR con estado real y conservar su historial.

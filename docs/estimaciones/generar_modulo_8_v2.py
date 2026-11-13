@@ -11,7 +11,7 @@ def interval(a, b):
 
 
 def render():
-    data = json.loads(Path(__file__).with_name('modulo-8-estimacion.json').read_text(encoding='utf-8'))
+    data = json.loads(Path(__file__).with_name('modulo-8-estimacion-v2.json').read_text(encoding='utf-8'))
     totals = {key: [0, 0] for key in data['layers']}
     for task in data['tasks']:
         for i, end in enumerate(('min', 'max')):
@@ -21,9 +21,9 @@ def render():
     total = [sum(v[i] for v in totals.values()) for i in range(2)]
     base = [sum(v[i] for v in data['shared_base_if_pending'].values()) for i in range(2)]
     full = [total[i] + base[i] for i in range(2)]
-    rows = ['# Épica del módulo 8. Arriendo de inmuebles adquiridos', '',
+    rows = ['# Épica del módulo 8. Arriendo de inmuebles adquiridos — v2', '',
         'Cotización inicial de **HU-34 a HU-39, HU-46, HU-47 y HU-51 a HU-54** de las [historias del proyecto](../historias_de_usuario_plan_del_proyecto.md), según el [contexto del negocio](../contexto.md). Son 12 historias: alta y comercialización, candidatos, contrato, entrega/operación, obligaciones, cartera y portal con pago digital. Se conserva el formato por capas de la [épica del login](login-epica.md).', '',
-        '**Referencia funcional:** [criterios Gherkin propuestos](arriendo-inmuebles-criterios-aceptacion.md), pendientes de validación; no se encontraron criterios aprobados específicos de arriendo. Las reglas de adquisición conservan los [criterios aprobados del módulo 2](adquisicion-inmuebles-criterios-aceptacion.md).', '',
+        '**Referencia funcional:** [criterios Gherkin propuestos](arriendo-inmuebles-criterios-aceptacion-v2.md), pendientes de validación; no se encontraron criterios aprobados específicos de arriendo. Las reglas de adquisición conservan los [criterios aprobados del módulo 2](adquisicion-inmuebles-criterios-aceptacion.md).', '',
         '## Resumen de horas', '', '| Capa | Rango |', '|---|---:|']
     rows += [f'| {label} | {interval(*totals[layer])} h |' for layer, label in data['layers'].items()]
     rows += [f'| **Módulo con base y dependencias funcionales** | **{interval(*total)} h** |',
@@ -32,7 +32,7 @@ def render():
         '**Estos totales no incluyen construir los módulos dependientes.** El motor contractual/firma del módulo 7, la elegibilidad de adquisición y el servicio privado de archivos deben estar disponibles o presupuestarse aparte. Agregar la base técnica no entrega esos módulos. Ver la sección 6 antes de consolidar una cotización de producto.', '',
         'Horas-persona; **1 d = 8 h** como convención, no calendario. TDD, pruebas propias y revisión están dentro de las tareas funcionales; QA corresponde a recorridos y fallos entre componentes. Consumo AWS, comisiones/licencias y esperas son partidas ajenas a estas horas. No se identificó estimación anterior del módulo 8.', '',
         '## Método y evidencia', '',
-        'Se aplica [estimate-task local](../skills/estimate-task/SKILL.md) y sus [referencias](../skills/estimate-task/references/calibration.md). [Datos y cálculo reproducible](../docs/estimaciones/modulo-8-estimacion.json), [generador](../docs/estimaciones/generar_modulo_8.py): `python docs/estimaciones/generar_modulo_8.py`.', '',
+        'Se aplica [estimate-task local](../skills/estimate-task/SKILL.md) y sus [referencias](../skills/estimate-task/references/calibration.md). [Datos y cálculo reproducible](../docs/estimaciones/modulo-8-estimacion-v2.json), [generador](../docs/estimaciones/generar_modulo_8_v2.py): `python docs/estimaciones/generar_modulo_8_v2.py`.', '',
         '**Confianza baja:** sin horas reales Casabra ni patrones implementados comprobados; proveedor y reglas operativas pendientes. A1 (S9.2 / RED-3596, 0,5 d) es conexión UI a endpoint con errores/pruebas. A2 (RED-765 / PR 766, aproximadamente 1 d) es consultas y generación documental con servicios existentes. Son referencias importadas no verificadas, analogías parciales para pantallas y comprobantes. H (1 d) es unidad de hipótesis por entregables, no tiempo histórico. Las estimaciones previas no se tratan como mediciones.', '',
         '**Fórmula por extremo:** `ceil(8 × días_referencia × unidades_base × factor_riesgo)`. ×ref se indica antes del riesgo. M0 usa ×1 para definición; M1 usa ×1,5–2 una sola vez por dinero, permisos, PII, migraciones o falta de patrón acreditado. No duplicar TDD/revisión ni multiplicar otra vez el total. No se aplica descuento fijo por IA. Recalibrar tras el primer cobro completo; rangos sin interpretación de percentil estadístico.', '',
         '## Alcance confirmado por historias', '', '| Historia | Resultado incluido |', '|---|---|',
@@ -116,7 +116,7 @@ def render():
         '- **Servicios externos separados:** tarifas y comisiones del proveedor de pagos, transacciones de firma del módulo 7 y cualquier licencia contratada. Sin proveedor y volumen no se inventan precios ni capacidades. Importe pagado por arrendatario, comisión y liquidación al comercio son conceptos separados.',
         '- **Esperas:** aprobación de reglas/plantillas, contratación y alta de pagos, credenciales/sandbox, dominio/SES y aceptación de negocio. No forman horas de desarrollo ni garantizan disponibilidad inmediata.',
         '- **Aceptación:** validar supuestos/Gherkin, conservar ADR y evidencia de escenarios reales frente a simulaciones, y recalibrar con horas reales. Esta entrega documenta una cotización; no activa cobros, contratos ni notificaciones reales.', '']
-    (ROOT/'epicas y tiempos/arriendo-inmuebles-epica.md').write_text('\n'.join(rows), encoding='utf-8')
+    (ROOT/'epicas y tiempos/arriendo-inmuebles-epica-v2.md').write_text('\n'.join(rows), encoding='utf-8')
     print(json.dumps({'subtotals': totals, 'module':total, 'shared_base':base, 'with_shared_base':full}, ensure_ascii=False))
 
 

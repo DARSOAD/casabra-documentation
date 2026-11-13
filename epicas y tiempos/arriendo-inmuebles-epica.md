@@ -1,473 +1,313 @@
-# Épica del módulo 8. Arriendo de inmuebles adquiridos
+# Épica de arriendo de inmuebles adquiridos
 
-Cotización inicial de **HU-34 a HU-39, HU-46, HU-47 y HU-51 a HU-54** de las [historias del proyecto](../historias_de_usuario_plan_del_proyecto.md), según el [contexto del negocio](../contexto.md). Son 12 historias: alta y comercialización, candidatos, contrato, entrega/operación, obligaciones, cartera y portal con pago digital. Se conserva el formato por capas de la [épica del login](login-epica.md).
+Estimación técnica preliminar del módulo 8 para cotización. Comprende la operación de arriendo de activos ya adquiridos por la compañía, desde su alistamiento hasta la administración del contrato, el autoservicio del arrendatario, los cobros digitales y el control de cartera.
 
-**Referencia funcional:** [criterios Gherkin propuestos](arriendo-inmuebles-criterios-aceptacion.md), pendientes de validación; no se encontraron criterios aprobados específicos de arriendo. Las reglas de adquisición conservan los [criterios aprobados del módulo 2](adquisicion-inmuebles-criterios-aceptacion.md).
+**Historias de referencia:** HU-34 a HU-39, HU-46, HU-47, HU-51 a HU-54; roles transversales de HU-33. Ver [historias del proyecto](../historias_de_usuario_plan_del_proyecto.md) y [contexto de negocio](../contexto.md).
+
+> Estimación de esfuerzo por persona, no tiempo calendario, compromiso contractual ni costo monetario. No hay horas reales de Casabra ni código de este módulo inspeccionado para demostrar reutilización; confianza baja. Cálculo reproducible: [estimación JSON](../docs/estimaciones/modulo-8-estimacion.json).
 
 ## Resumen de horas
 
-| Capa | Rango |
+| Capa | Rango estimado |
 |---|---:|
-| Definición | 12–24 h |
-| Backend | 294–640 h |
-| Frontend | 114–240 h |
-| Infraestructura incremental y observabilidad | 27–60 h |
-| Validación transversal | 54–112 h |
-| Entrega | 12–24 h |
-| **Módulo con base y dependencias funcionales** | **513–1100 h** |
-| Base técnica compartida, solo si está pendiente | 78–176 h |
-| **Módulo más toda la base técnica pendiente** | **591–1276 h** |
+| Análisis funcional | 8–16 h |
+| Diseño UX/UI adaptable | 20–32 h |
+| Backend | 195–336 h |
+| Frontend | 114–204 h |
+| Infraestructura incremental y observabilidad | 24–48 h |
+| Validación transversal | 24–40 h |
+| Entrega y documentación | 6–16 h |
+| **Módulo sobre base funcional existente** | **391–692 h** |
+| Base compartida, solo si aún no existe | 48–96 h |
+| **Módulo más base compartida pendiente** | **439–788 h** |
 
-**Estos totales no incluyen construir los módulos dependientes.** El motor contractual/firma del módulo 7, la elegibilidad de adquisición y el servicio privado de archivos deben estar disponibles o presupuestarse aparte. Agregar la base técnica no entrega esos módulos. Ver la sección 6 antes de consolidar una cotización de producto.
+Los rangos por tarea incluyen su TDD, pruebas propias y revisión. La validación transversal cubre recorridos completos y pruebas de integración que no sustituyen ni repiten las unitarias de cada tarea. Los costos de proveedor de pagos, mensajería, AWS y otras esperas externas no son horas de desarrollo y quedan fuera.
 
-Horas-persona; **1 d = 8 h** como convención, no calendario. TDD, pruebas propias y revisión están dentro de las tareas funcionales; QA corresponde a recorridos y fallos entre componentes. Consumo AWS, comisiones/licencias y esperas son partidas ajenas a estas horas. No se identificó estimación anterior del módulo 8.
+## Método, referencias y confianza
 
-## Método y evidencia
+Se aplica la skill local [estimate-task](../skills/estimate-task/SKILL.md) y su [calibración](../skills/estimate-task/references/calibration.md). No existen tareas cerradas comparables de Casabra. Las referencias importadas A1 (integración de UI a endpoint existente) y A2 (consultas/documento con patrones existentes) no se consideran equivalentes a crear este módulo y no se usan para inferir productividad. Se usa **H**, hipótesis técnica por entregable y pruebas, sin presentarla como tiempo observado.
 
-Se aplica [estimate-task local](../skills/estimate-task/SKILL.md) y sus [referencias](../skills/estimate-task/references/calibration.md). [Datos y cálculo reproducible](../docs/estimaciones/modulo-8-estimacion.json), [generador](../docs/estimaciones/generar_modulo_8.py): `python docs/estimaciones/generar_modulo_8.py`.
+- **Unidad:** 1 día productivo = 8 horas-persona, convención de cálculo; no fija horas facturables ni plazo calendario.
+- **M0:** análisis o diseño sin implementación; factor ×1.
+- **M1:** dinero, transacciones, contratos, roles/permisos, documentos personales o patrón no comprobado; factor ×1,5–2 sobre la base H. Se aplica una sola vez; sus revisiones y validaciones sensibles ya están incorporadas en el rango.
+- **Fórmula:** horas = 8 h/d × unidades H × factor de modo. Las unidades H son juicio técnico explícito, no anclas históricas.
+- **No se descuenta reutilización** por la mera existencia de documentación o por suponer autenticación, contratos, inventario, API, AWS o componentes listos. La base compartida se cotiza aparte solo si la inspección confirma que falta.
 
-**Confianza baja:** sin horas reales Casabra ni patrones implementados comprobados; proveedor y reglas operativas pendientes. A1 (S9.2 / RED-3596, 0,5 d) es conexión UI a endpoint con errores/pruebas. A2 (RED-765 / PR 766, aproximadamente 1 d) es consultas y generación documental con servicios existentes. Son referencias importadas no verificadas, analogías parciales para pantallas y comprobantes. H (1 d) es unidad de hipótesis por entregables, no tiempo histórico. Las estimaciones previas no se tratan como mediciones.
+## Alcance funcional estimado
 
-**Fórmula por extremo:** `ceil(8 × días_referencia × unidades_base × factor_riesgo)`. ×ref se indica antes del riesgo. M0 usa ×1 para definición; M1 usa ×1,5–2 una sola vez por dinero, permisos, PII, migraciones o falta de patrón acreditado. No duplicar TDD/revisión ni multiplicar otra vez el total. No se aplica descuento fijo por IA. Recalibrar tras el primer cobro completo; rangos sin interpretación de percentil estadístico.
-
-## Alcance confirmado por historias
-
-| Historia | Resultado incluido |
+| Historias | Trabajo incluido |
 |---|---|
-| HU-34 | Iniciar arriendo solo para inmuebles adquiridos con ruta autorizada |
-| HU-35 | Alistamiento, adecuaciones, disponibilidad y condiciones de oferta |
-| HU-36 | Ficha, fotos y seguimiento manual de anuncios/enlaces |
-| HU-37 | Interesados, documentos, visitas, evaluación y recomendación |
-| HU-38 | Condiciones completas y formalización mediante motor contractual |
-| HU-39 | Inventario, entrega, novedades y devolución con evidencia |
-| HU-46 | Cánones, vencimientos, reajustes, renovación y terminación |
-| HU-47 | Tablero de ocupación, cobros, deuda, mora, vacancia y vencimientos |
-| HU-51 | Portal propio, estado de cuenta y pago digital del canon |
-| HU-52 | Avisos previos, vencidos y pagos sin confirmar |
-| HU-53 | Estados de transacción, conciliación y pagos manuales con soporte |
-| HU-54 | Comprobante interno descargable de pago confirmado |
-
-**Reglas confirmadas del contexto:** la compañía es dueña del activo y el arrendatario es distinto del propietario original. Arriendo ocurre después de adquisición y asignación de ruta. Un pago digital solo queda confirmado con verificación del proveedor; el módulo contable consume esos movimientos para evitar duplicarlos.
-
-### Supuestos para poder cotizar
-
-- Una compañía, inmueble completo por contrato y un arrendatario principal; moneda COP propuesta y periodicidad mensual inicial. No se cotizan habitaciones/unidades independientes, múltiples pagadores, multimoneda ni períodos semanales. Se registran garantías/depósitos como condiciones cuando procedan según definición de negocio; no se presume su exigibilidad ni se implementa custodia/liquidación de depósitos.
-- El gerente de activos inicia la ruta Arriendo consumiendo la autorización del módulo 2. El administrador de inmuebles registra alistamiento/entrega, el asesor gestiona candidatos, el administrador confirma selección/condiciones/obligaciones/pagos manuales, y el gerente consulta indicadores. La matriz concreta y separación de funciones deben aprobarse.
-- Candidatos y evaluación registrados por equipo interno, con decisión manual y documentos privados. Sin solicitud pública autoservicio, scoring ni consultas externas. Se registra agenda simple de visitas. El contacto seleccionado recibe acceso al portal mediante identidad existente o invitación sobre el login compartido; no se reutiliza el rol de propietario original.
-- Publicación consiste en preparar ficha/fotos y registrar anuncios, canales, enlaces y estado manualmente; no hay integración automática con portales ni marketplace. Se habilitan únicamente fotografías seleccionadas como publicables; no se publica el expediente privado.
-- Formalización utiliza la plantilla de arriendo y flujo de dos firmantes del módulo 7: arrendatario principal y representante de compañía. Condiciones de garantías se registran como datos; codeudor/garante firmante, anexos u otrosíes requieren ampliar esa dependencia. Renovación se cotiza como nuevo contrato/período vinculado usando la misma plantilla, no como un motor de documentos adicionales.
-- Contrato firmado habilita la entrega bajo requisitos acordados, pero no prueba ocupación ni pago. El inicio de obligaciones depende de la fecha efectiva pactada y activación autorizada, no de una redirección de firma. Ocupación depende de entrega/devolución real.
-- Cargo mensual con vencimiento por día configurado; si ese día no existe, usar último día del mes, pendiente de acuerdo. Primera/última cuota especial puede tener importe explícito aprobado; no se calcula prorrateo automático. Reajuste por valor/porcentaje y fecha futuros ingresados y aprobados manualmente, sin consulta de índices, topes o fórmulas legales.
-- Las reglas de terminación fijan fecha efectiva y cancelación prospectiva de cargos no causados; los cargos causados y saldos permanecen. Cancelaciones y ajustes son auditados, no borrado de historia. Sin penalidades, intereses, gestión judicial ni condonación automática.
-- Pagos completos o abonos a una obligación seleccionada; aplicar hasta su saldo y dejar excedente como saldo a favor del mismo contrato. Reasignación manual autorizada y auditada; no aplicar entre contratos ni devolver automáticamente. Mantener suma de importe aplicado y no aplicado igual a pagos confirmados vigentes, netos de reversos.
-- Un proveedor y un medio de pago inicial mediante checkout alojado, con API/sandbox, webhook autenticable, consulta de estado/referencia y tratamiento de reversos. No se almacenan tarjetas ni se implementan débitos automáticos. Identificar proveedor, medio, comisiones, límites y posibilidades de prueba antes de implementar.
-- Pagos manuales quedan pendientes hasta validación explícita por administrador con referencia y soporte; el equipo contrasta evidencia bancaria fuera del sistema. El soporte solo no confirma pago. No se permite marcar un pago digital exitoso contra el resultado del proveedor.
-- Recordatorios in-app y por correo transaccional: antes del vencimiento, vencido y transacción sin confirmar. Antelación/frecuencia configurables acotadas, zona propuesta America/Bogota. Reintentos y deduplicación interna, sin prometer recepción exactamente una vez en el buzón. Sin SMS, WhatsApp, push o llamadas.
-- Comprobante interno único por pago confirmado, incluyendo abonos; disponible en portal y aviso con enlace. No se presenta como factura DIAN ni paz y salvo. Reversos conservan original y estado actualizado/registro compensatorio. Emitir recibo o enviar correo no altera el saldo.
-- App web Next.js adaptable a celular, FastAPI, RDS PostgreSQL propuesto y S3. Archivos limitados inicialmente a PDF/JPEG/PNG, con tamaños/cantidades pendientes; carga privada validada mediante servicio compartido. Sin modo offline, app nativa ni gestión avanzada de mantenimiento.
-
-### Estados y métricas propuestos
-
-| Dimensión | Regla propuesta |
-|---|---|
-| Disponibilidad | En alistamiento, Disponible, Reservado u Ocupado; independiente de Adquirido y de publicación |
-| Solicitud | Registrada, En evaluación, Recomendada, Seleccionada, Rechazada o Retirada; administrador confirma selección bajo exclusión de concurrencia |
-| Contrato operativo | En preparación, Pendiente de firma, Formalizado, Activo, Terminado o Cancelado; sin superposición operativa de vigencias |
-| Obligación | Pendiente, Parcial, Saldada o Cancelada; vencida es condición de fecha/saldo, no pérdida de historial |
-| Transacción | Pendiente, Confirmada, Fallida o Por conciliar; reverso se registra como movimiento compensatorio ligado a la confirmación original |
-| Ocupación | Conteo/ratio al corte por entrega y devolución; indicar total de activos de arriendo y excluir registros incompletos explícitamente |
-| Vacancia | Días disponibles sin ocupante; alistamiento se muestra aparte y se excluye de días disponibles |
-| Ingresos operativos | Cobros confirmados en período de pago menos reversos en el período, separados de canon causado, saldo y comisiones |
-| Mora | Saldo vencido y días desde vencimiento; no implica cálculo de interés ni valoración legal |
-
-La confirmación del navegador nunca mueve dinero. Webhooks verificados y consulta del proveedor determinan resultado. Referencia/moneda/importe inconsistentes pasan a conciliación. Una confirmación tardía puede producir saldo a favor si el cargo ya fue cubierto; no se descarta dinero. Reversos revierten imputaciones de manera trazable y pueden reabrir deuda. Terminar contrato o devolver el inmueble no elimina obligaciones previas.
-
-**Pendientes:** campos y documentos de candidatos, aprobadores, moneda/periodicidad finales, garantías y depósitos, fecha de activación, reglas del primer/último período, reajustes, renovaciones/terminación, proveedor/medio de pago, comisiones, disputas, frecuencia de avisos, política de retención, volumen y metas de rendimiento. Son decisiones de cotización inicial; no se inventan reglas legales ni se las presenta como aprobadas.
-
-**Fuera de alcance adicional:** contabilidad general, factura electrónica/DIAN, rentabilidad consolidada, conciliación bancaria por archivos, ejecución de reembolsos, cartera judicial, portales de proveedores, pólizas, automatización de mantenimiento y exportaciones BI avanzadas. El módulo 10 recibe referencias de movimientos confirmados/compensatorios: no vuelve a registrar un canon ya cobrado.
-
-## Tabla de estimación por tarea
-
-| ID | h | d | Modo | Referencia × unidades; riesgo | Motivo / verificación |
-|---|---:|---:|---|---|---|
-| AN-AR-01 | 12–24 | 1,5–3 | M0 | H × 1,5–3; ×1–1 | Reglas y proveedor pendientes; decisiones sin implementación. |
-| BE-AR-01 | 24–48 | 3–6 | M1 | H × 2–3; ×1,5–2 | Varias relaciones, datos personales y registro monetario consistente. |
-| BE-AR-02 | 15–32 | 1,875–4 | M1 | H × 1,25–2; ×1,5–2 | Elegibilidad y disponibilidad no deben alterar adquisición. |
-| BE-AR-03 | 12–24 | 1,5–3 | M1 | H × 1–1,5; ×1,5–2 | Separar información publicable de expediente privado. |
-| BE-AR-04 | 21–48 | 2,625–6 | M1 | H × 1,75–3; ×1,5–2 | PII, documentos y decisiones de selección trazables. |
-| BE-AR-05 | 18–40 | 2,25–5 | M1 | H × 1,5–2,5; ×1,5–2 | Mapeo contractual, identidad y prevención de doble ocupación. |
-| BE-AR-06 | 18–40 | 2,25–5 | M1 | H × 1,5–2,5; ×1,5–2 | Historial de custodia y evidencias por contrato. |
-| BE-AR-07 | 30–64 | 3,75–8 | M1 | H × 2,5–4; ×1,5–2 | Reglas temporales y monetarias con cambios prospectivos. |
-| BE-AR-08 | 24–56 | 3–7 | M1 | H × 2–3,5; ×1,5–2 | Dinero: saldos y movimientos deben conservarse bajo concurrencia. |
-| BE-AR-09 | 24–56 | 3–7 | M1 | H × 2–3,5; ×1,5–2 | Integración externa nueva, importe autorizado y envío incierto. |
-| BE-AR-10 | 30–64 | 3,75–8 | M1 | H × 2,5–4; ×1,5–2 | Eventos duplicados/desordenados y liquidación monetaria consistente. |
-| BE-AR-11 | 18–40 | 2,25–5 | M1 | H × 1,5–2,5; ×1,5–2 | Confirmación manual de dinero con evidencia y control de duplicados. |
-| BE-AR-12 | 18–40 | 2,25–5 | M1 | H × 1,5–2,5; ×1,5–2 | Programación con pagos concurrentes y destinatarios sensibles. |
-| BE-AR-13 | 12–24 | 1,5–3 | M1 | A2 × 1–1,5; ×1,5–2 | Analogía parcial A2: PDF derivado de movimientos confirmados. |
-| BE-AR-14 | 18–40 | 2,25–5 | M1 | H × 1,5–2,5; ×1,5–2 | Agregados monetarios y temporales sin duplicar movimientos. |
-| BE-AR-15 | 12–24 | 1,5–3 | M1 | H × 1–1,5; ×1,5–2 | Datos privados, acceso del arrendatario y correcciones monetarias. |
-| FE-AR-01 | 15–32 | 1,875–4 | M1 | A1 × 2,5–4; ×1,5–2 | Analogía parcial A1: lista, ficha y anuncios con permisos. |
-| FE-AR-02 | 15–32 | 1,875–4 | M1 | A1 × 2,5–4; ×1,5–2 | PII, carga de documentos y decisión compartida. |
-| FE-AR-03 | 18–40 | 2,25–5 | M1 | A1 × 3–5; ×1,5–2 | Formularios monetarios y cambios efectivos en el tiempo. |
-| FE-AR-04 | 12–24 | 1,5–3 | M1 | A1 × 2–3; ×1,5–2 | Formulario móvil de inventario con archivos e historial. |
-| FE-AR-05 | 18–40 | 2,25–5 | M1 | A1 × 3–5; ×1,5–2 | Saldo, estados de pago y correcciones con soporte. |
-| FE-AR-06 | 24–48 | 3–6 | M1 | A1 × 4–6; ×1,5–2 | Varias vistas móviles con identidad, dinero y retorno externo. |
-| FE-AR-07 | 12–24 | 1,5–3 | M1 | A1 × 2–3; ×1,5–2 | Métricas con cortes y denominadores explícitos. |
-| OPS-AR-01 | 18–40 | 2,25–5 | M1 | H × 1,5–2,5; ×1,5–2 | Credenciales, callbacks y trabajos sensibles recuperables. |
-| OPS-AR-02 | 9–20 | 1,125–2,5 | M1 | H × 0,75–1,25; ×1,5–2 | Datos privados y fallos de dinero/avisos que requieren visibilidad. |
-| QA-AR-01 | 18–40 | 2,25–5 | M1 | H × 1,5–2,5; ×1,5–2 | Integración entre adquisición, candidatos, contrato y ocupación. |
-| QA-AR-02 | 24–48 | 3–6 | M1 | H × 2–3; ×1,5–2 | Dinero bajo concurrencia y contrato real del proveedor. |
-| QA-AR-03 | 12–24 | 1,5–3 | M1 | H × 1–1,5; ×1,5–2 | Recorrido del arrendatario y canales de notificación reales. |
-| REL-AR-01 | 12–24 | 1,5–3 | M1 | H × 1–1,5; ×1,5–2 | Activar cartera, pagos y avisos requiere coordinación y evidencia. |
+| HU-34–36 | Ingresar activos adquiridos a arriendo; registrar alistamiento, condiciones, canon y oferta comercial; administrar anuncios/enlaces manualmente. |
+| HU-37–39 | Gestionar interesados y candidatos, formalizar el contrato aprobado, inventario, entrega, novedades y devolución. |
+| HU-46 | Configurar obligaciones, calendario de cánones, vencimientos, reajustes, renovaciones y terminación. |
+| HU-51–54 | Portal adaptable para contrato/estado de cuenta, pago digital, estados de transacción, registro de pagos externos, recordatorios y comprobantes internos. |
+| HU-47 | Tablero de inmuebles y contratos con ocupación, ingresos, deuda/mora y próximos vencimientos. |
+| HU-33 | Aplicar permisos por rol a la información y acciones del módulo; arrendatario separado del propietario original. |
 
-## 0 Definición — 12–24 h
+### 0. Análisis funcional — 8–16 h
 
-### AN-AR-01 Definir operación, obligaciones y contrato de pagos — 12–24 h
+#### AN-AR-01 Reglas, estados y decisiones pendientes — 8–16 h
 
-**Fuente:** HU-34, HU-35, HU-36, HU-37, HU-38, HU-39, HU-46, HU-47, HU-51, HU-52, HU-53, HU-54. **Estimación:** M0 · H × 1,5–3; luego ×1–1. Reglas y proveedor pendientes; decisiones sin implementación.
+**Estimación:** 1–2 d · M0 · H (1 d) × 1–2 unidades × factor 1. Incluye concretar los criterios de aceptación y registrar decisiones, no implementación.
 
-- Acordar elegibilidad, alistamiento, selección, entrega/devolución, cronograma mensual, reajustes, abonos, imputación y cierre con deuda.
-- Definir métricas de cartera/ocupación, permisos, canales de aviso y mecanismo de alta del arrendatario; mapear las 12 historias a criterios Gherkin y ADR.
-- Revisar API/sandbox del proveedor de pagos: checkout alojado, referencias únicas, webhooks verificables, consulta, reversos y estados inciertos. La estimación presupone estas capacidades, no un proveedor elegido.
+- Acordar vencimientos, pagos parciales, pagos tardíos, reversos, pagos externos, qué origina mora y cuándo se considera saldada una obligación.
+- Precisar el estado de solicitud/contrato/inmueble y la transición entre disponibilidad, reservado, ocupado y vacante sin duplicar la máquina de adquisición.
+- Definir datos que el arrendatario puede consultar, manejo de varios pagadores y medios/canales de notificación.
+- Confirmar si firma electrónica, identidad, contratos, inmueble y login existentes se integran o son dependencias externas.
 
-**Tecnologías:** Markdown, OpenAPI, Gherkin y sandbox del proveedor por seleccionar.
+**Tecnologías/artefactos:** criterios Gherkin en Markdown, decisiones versionadas en Git y contrato de API OpenAPI.
 
+## 1. Diseño UX/UI adaptable — 20–32 h
 
-## 1 Backend — 294–640 h
+#### UX-AR-01 Flujos del administrador y arrendatario — 20–32 h
 
-### BE-AR-01 Modelo de arriendo y migraciones — 24–48 h
+**Estimación:** 2,5–4 d · M0 · H (1 d) × 2,5–4 unidades × factor 1. El diseño no presupone componentes implementados.
 
-**Fuente:** HU-34, HU-37, HU-38, HU-39, HU-46, HU-53. **Estimación:** M1 · H × 2–3; luego ×1,5–2. Varias relaciones, datos personales y registro monetario consistente.
+- Diseñar preparación/publicación, candidato, contrato/entrega, tablero de cartera y vistas responsivas del arrendatario.
+- Diseñar selección de obligación y flujo de pago con estados pendiente, confirmando, pagado, fallido y por conciliar; no mostrar pagado antes de confirmación verificable.
+- Diseñar estados vacíos, errores, mora, indisponibilidad de pasarela y comprobante descargable.
+- Revisar accesibilidad básica y navegación en celular; validar roles y separación de datos.
 
-- Modelar ficha de arriendo, anuncio, candidato/solicitud, visitas, vínculo contractual, entrega/devolución, novedades, obligaciones, transacciones, imputaciones, avisos y comprobantes.
-- Reutilizar identidad/inmueble del proyecto; usar Decimal y moneda por contrato, referencias externas únicas e índices por vencimiento/contrato.
-- Probar migraciones, integridad y exclusión de contratos operativos superpuestos para un inmueble completo. Sin multiunidad ni modelo de copropiedad.
+**Tecnologías:** prototipos Figma o equivalente; la herramienta y el sistema visual son pendientes de confirmar.
 
-**Tecnologías:** SQLAlchemy 2, Alembic, RDS PostgreSQL, pytest y Testcontainers.
+## 2. Backend — 195–336 h
 
-### BE-AR-02 Alta en arriendo y alistamiento — 15–32 h
+Referencia propuesta: FastAPI, SQLAlchemy/Pydantic, PostgreSQL en RDS. Es una base de estimación, no evidencia de implementación ya disponible. API bajo `/api/v1`; rutas ilustrativas a concretar en OpenAPI.
 
-**Fuente:** HU-34, HU-35. **Estimación:** M1 · H × 1,25–2; luego ×1,5–2. Elegibilidad y disponibilidad no deben alterar adquisición.
+### BE-AR-01 Modelos de inmueble, contrato y obligaciones — 15–28 h
 
-- Proponer GET/POST /api/v1/arriendos/inmuebles y PATCH de condiciones; consumir la asignación Arriendo del módulo 2 con permiso de gerente de activos, sin construir otra máquina de adquisición.
-- Registrar adecuaciones, alistamiento, disponibilidad, canon de oferta, depósitos/garantías declarados, servicios y condiciones; distinguir disponibilidad operativa de estado de publicación.
-- Validar Adquirido y ruta Arriendo, impedir doble alta y publicación no disponible. Adecuaciones se vinculan al módulo 6 si existe; no se gestiona obra aquí.
+**Estimación:** 15–28 h (1,88–3,5 d) · M1 · H (1 d) × 1,25–1,75 unidades × factor 1,5–2. Incluye TDD de modelos y restricciones.
 
-**Tecnologías:** FastAPI, Pydantic, SQLAlchemy, pytest.
+- Modelar datos de alistamiento, anuncio, interesados, contrato, entrega, obligación periódica y estado de cuenta.
+- Definir claves, unicidad, índices, fechas y relaciones; versionar migraciones.
+- Probar restricciones, valores límite y compatibilidad de migración.
 
-### BE-AR-03 Ficha comercial y seguimiento de anuncios — 12–24 h
+**Tecnologías:** SQLAlchemy, Alembic y PostgreSQL/RDS.
 
-**Fuente:** HU-36. **Estimación:** M1 · H × 1–1,5; luego ×1,5–2. Separar información publicable de expediente privado.
+### BE-AR-02 Alistamiento, oferta e interesados — 24–40 h
 
-- Gestionar descripción, selección de fotos autorizadas, precio, canales, enlaces y estados de anuncios registrados manualmente.
-- Reutilizar servicio privado de archivos; habilitar solo copia/selección expresamente publicable de fotografías, sin exponer documentos o datos de candidatos.
-- TDD de visibilidad, anuncio duplicado, enlace inválido y retiro al ocupar/no disponer. No publicar automáticamente en portales ni construir un marketplace público.
+**Estimación:** 24–40 h (3–5 d) · M1 · H (1 d) × 2–2,5 unidades × factor 1,5–2. Incluye autorización de candidatos/documentos.
 
-**Tecnologías:** FastAPI, S3 mediante servicio compartido, PostgreSQL, pytest.
+- Crear/actualizar ficha de arriendo solo para activo adquirido y asignado a esta ruta.
+- Registrar preparación, canon objetivo, condiciones, disponibilidad, fotos y anuncio/enlace manual.
+- Registrar solicitudes, documentos, visitas, evaluación y recomendación; filtrar y consultar según rol.
+- Validar transiciones y evitar publicación si no se cumplen condiciones operativas acordadas.
 
-### BE-AR-04 Interesados, solicitudes, visitas y evaluación — 21–48 h
+**Tecnologías:** FastAPI, Pydantic, SQLAlchemy y S3 privado para archivos, si se confirma disponible.
 
-**Fuente:** HU-37. **Estimación:** M1 · H × 1,75–3; luego ×1,5–2. PII, documentos y decisiones de selección trazables.
+### BE-AR-03 Contrato, inventario y entrega — 24–40 h
 
-- Proponer /api/v1/arriendos/solicitudes con contacto, inmueble, documentos, visitas, resultado y recomendación; registrar evaluación manual y motivo por asesor autorizado.
-- Validar coincidencias básicas por identificación/contacto para alertar duplicados, sin fusiones automáticas; administrador confirma candidato elegido y reserva bajo control de concurrencia.
-- Probar acceso a documentos por solicitud, transiciones, visitas y dos selecciones simultáneas. Reutilizar carga/validación privada; sin scoring, aseguradora, centrales de riesgo ni KYC externo.
+**Estimación:** 24–40 h (3–5 d) · M1 · H (1 d) × 2–2,5 unidades × factor 1,5–2. Contratos y datos personales, con integración legal pendiente.
 
-**Tecnologías:** FastAPI, Pydantic, PostgreSQL, servicio compartido de archivos, pytest.
+- Crear expediente de contrato con canon, periodicidad, fechas, reajustes, obligaciones y garantías aprobadas.
+- Integrarse al flujo de firma electrónica existente si se verifica; no construir un proveedor de firma nuevo.
+- Registrar inventario, evidencia de entrega, acta/novedades y devolución; vincularlos al contrato y al inmueble.
+- Evitar entrega antes del estado contractual que se acuerde en los criterios.
 
-### BE-AR-05 Formalización y acceso del arrendatario — 18–40 h
+**Tecnologías:** FastAPI, PostgreSQL y almacenamiento privado de archivos.
 
-**Fuente:** HU-38, HU-51. **Estimación:** M1 · H × 1,5–2,5; luego ×1,5–2. Mapeo contractual, identidad y prevención de doble ocupación.
+### BE-AR-04 Calendario de cobros y estado de cartera — 24–40 h
 
-- Construir snapshot de canon, periodicidad, día de pago, vigencia, reajustes, obligaciones y garantías; enviarlo al motor del módulo 7 y consultar firma/archivo confirmados.
-- Vincular arrendatario a identidad existente o invitación de activación usando autenticación compartida; comprobar titularidad de invitación, expiración y no elevación de privilegios.
-- Proteger contra contratos superpuestos; habilitar entrega cuando contrato esté formalizado y requisitos acordados cumplidos. Firma no prueba entrega ni pago.
-- TDD de contrato rechazado/pendiente, usuario equivocado y activación repetida. No reconstruir plantillas, firma o archivo contractual; no crear onboarding/KYC del propietario.
+**Estimación:** 24–40 h (3–5 d) · M1 · H (1 d) × 2–2,5 unidades × factor 1,5–2. Lógica de dinero/fechas y cálculos idempotentes.
 
-**Tecnologías:** FastAPI, API del módulo 7, autenticación compartida, pytest.
+- Generar obligaciones de canon con base en los datos del contrato, evitando duplicados al reintentar.
+- Calcular saldo y estado de cuenta; determinar vencido/mora según reglas aprobadas, sin inventar penalidades.
+- Registrar reajustes, vencimientos, renovaciones y terminaciones según condiciones y permisos.
+- Cubrir cambios de fecha, zona horaria, cierres de contrato y pagos que cubren una parte del saldo.
 
-### BE-AR-06 Inventario, entrega, novedades y devolución — 18–40 h
+**Tecnologías:** Python, SQLAlchemy y PostgreSQL; tareas programadas solo tras confirmar infraestructura.
 
-**Fuente:** HU-39. **Estimación:** M1 · H × 1,5–2,5; luego ×1,5–2. Historial de custodia y evidencias por contrato.
+### BE-AR-05 Integración con pasarela de pago — 30–48 h
 
-- Proponer /api/v1/arriendos/contratos/{id}/actas y /novedades; registrar inventario por ítem, estado, observación, fotos y fechas reales de entrega/devolución.
-- Mantener correcciones versionadas y novedades con responsable/estado; usar archivos privados compartidos. Devolución cambia ocupación y deja alistamiento pendiente, sin borrar deudas.
-- TDD de doble entrega/devolución, archivo ajeno y corrección con autor. Sin órdenes de mantenimiento, proveedores, tasación automática de daños ni nueva firma de actas.
+**Estimación:** 30–48 h (3,75–6 d) · M1 · H (1 d) × 2,5–3 unidades × factor 1,5–2. No hay proveedor ni patrón de pago existente verificado.
 
-**Tecnologías:** FastAPI, PostgreSQL, S3 compartido, pytest.
+- Crear intención de pago vinculada a contrato, obligación e importe; impedir duplicidad/cobro concurrente.
+- Validar autenticidad de notificaciones del proveedor y procesar confirmaciones de forma idempotente.
+- Mantener estados pendiente, confirmada, fallida o por conciliar; tratar reintentos, notificaciones repetidas y fallas.
+- No guardar datos sensibles de tarjeta; manejar cancelación/reverso de acuerdo con capacidades documentadas del proveedor.
+- Probar sandbox y casos negativos acordados. La conciliación bancaria automática y los reembolsos avanzados no se presuponen.
 
-### BE-AR-07 Calendario, reajustes, renovaciones y terminación — 30–64 h
+**Tecnologías:** cliente HTTP de Python, webhook FastAPI, gestor de secretos y sandbox del proveedor por seleccionar.
 
-**Fuente:** HU-38, HU-46. **Estimación:** M1 · H × 2,5–4; luego ×1,5–2. Reglas temporales y monetarias con cambios prospectivos.
+### BE-AR-06 Pagos externos, conciliación y comprobante interno — 18–32 h
 
-- Generar obligaciones mensuales con clave única contrato/período/concepto; día configurable y último día de mes cuando no exista el día indicado, bajo supuesto a validar.
-- Aplicar reajuste futuro con fecha y valor/porcentaje introducido y aprobado por administrador; conservar versiones, sin índices legales o tasas automáticos.
-- Renovar mediante nuevo período/contrato vinculado usando módulo 7; terminar con fecha efectiva y motivo, cancelar prospectivamente obligaciones futuras no causadas según regla acordada y conservar las causadas/impagadas.
-- TDD de febrero/bisiesto, fechas límite, generación concurrente, cambio retroactivo rechazado, renovación sin superposición y cierre con deuda. Prorrateos especiales, penalidades e intereses automáticos no incluidos.
+**Estimación:** 18–32 h (2,25–4 d) · M1 · H (1 d) × 1,5–2 unidades × factor 1,5–2. Impacta dinero y evidencia del arrendatario.
 
-**Tecnologías:** FastAPI, PostgreSQL, Decimal, datetime/zoneinfo, worker Python, pytest.
+- Permitir registrar pagos no digitales con fecha, valor, referencia, medio y soporte, según permisos.
+- Vincular confirmación y movimiento a obligaciones/saldos sin registrar dos veces una transacción.
+- Generar comprobante interno descargable solo para pagos confirmados; conservar estado, identificador y fecha.
+- Probar abonos, saldos restantes, duplicados y pagos sin aplicación automática.
 
-### BE-AR-08 Cuenta corriente, abonos e imputación — 24–56 h
+**Tecnologías:** FastAPI, PostgreSQL, generación PDF según librería aprobada y S3 si se conserva el documento.
 
-**Fuente:** HU-46, HU-47, HU-51, HU-53. **Estimación:** M1 · H × 2–3,5; luego ×1,5–2. Dinero: saldos y movimientos deben conservarse bajo concurrencia.
+### BE-AR-07 Recordatorios y avisos — 12–28 h
 
-- Implementar registro de movimientos e imputaciones por contrato/obligación: cargos, pagos confirmados, abonos y movimientos compensatorios, sin borrar historia.
-- Imputar primero a la obligación seleccionada sin superar su saldo; excedente queda como saldo a favor no aplicado. Reasignaciones manuales autorizadas conservan trazabilidad; no cruzar contratos automáticamente.
-- Calcular saldo, deuda vencida y mora en días sin inferir intereses; pagos pendientes/fallidos no disminuyen deuda. Separar monto bruto pagado de comisiones del proveedor.
-- TDD de pagos parciales, dos confirmaciones simultáneas, exceso, reverso y conservación entre total confirmado vigente, importe aplicado y no aplicado. Exponer IDs estables para futuro consumo contable sin replicar contabilidad.
+**Estimación:** 12–28 h (1,5–3,5 d) · M1 · H (1 d) × 1–1,75 unidades × factor 1,5–2. Automatización nueva con efectos a usuarios; canal/proveedor no definido.
 
-**Tecnologías:** PostgreSQL con transacciones/bloqueos, SQLAlchemy, Decimal, pytest.
+- Programar avisos antes y después del vencimiento conforme a calendario acordado.
+- Notificar fallas o falta de confirmación del pago y evitar avisos contradictorios después de confirmar.
+- Guardar resultado/envío e impedir duplicados por reintentos.
+- Aplicar preferencias, consentimiento y protección de datos de contacto.
 
-### BE-AR-09 Inicio de pago digital del canon — 24–56 h
+**Tecnologías:** cola/tareas programadas y proveedor de correo/notificación por confirmar; no se supone SMS incluido.
 
-**Fuente:** HU-51, HU-53. **Estimación:** M1 · H × 2–3,5; luego ×1,5–2. Integración externa nueva, importe autorizado y envío incierto.
+### BE-AR-08 API del portal de arrendatario — 18–28 h
 
-- Proponer POST /api/v1/arriendos/contratos/{id}/intentos-pago: verificar arrendatario, moneda, obligación e importe/abono contra saldo y crear referencia única antes de invocar proveedor.
-- Integrar un checkout alojado, un proveedor y un medio habilitado; usar consulta por referencia/idempotencia ante timeout y limitar intentos activos sin perder confirmaciones tardías.
-- TDD de importe manipulado, contrato ajeno, doble clic, intento expirado y respuesta ambigua. No almacenar datos de tarjeta, crear débitos recurrentes ni implementar billetera.
+**Estimación:** 18–28 h (2,25–3,5 d) · M1 · H (1 d) × 1,5–1,75 unidades × factor 1,5–2. Datos de contrato/pagos privados y permisos por usuario.
 
-**Tecnologías:** FastAPI, HTTPX, API/sandbox de pagos por seleccionar, pytest.
+- Exponer contrato y obligaciones del usuario autenticado, historial, saldo y comprobantes disponibles.
+- Crear solicitud de pago y devolver estados seguros sin exponer datos internos o de otros arrendatarios.
+- Validar autenticación, límites y acceso cruzado negativo.
 
-### BE-AR-10 Confirmación, conciliación y reversos de pagos — 30–64 h
+**Tecnologías:** FastAPI, Pydantic y autorización basada en rol/relación.
 
-**Fuente:** HU-51, HU-53, HU-54. **Estimación:** M1 · H × 2,5–4; luego ×1,5–2. Eventos duplicados/desordenados y liquidación monetaria consistente.
+### BE-AR-09 Consultas del tablero de administración — 18–28 h
 
-- Verificar autenticidad de webhooks, consultar estado autoritativo cuando corresponda y comparar referencia, contrato, moneda e importe; registrar evento antes de procesar idempotentemente.
-- Modelar transacción Pendiente, Confirmada, Fallida o Por conciliar; el retorno del navegador nunca confirma. Conciliar pendientes por consulta programada, con errores visibles y reproceso autorizado.
-- Registrar reversos/contracargos informados como movimientos compensatorios vinculados, sin borrar la confirmación histórica; recalcular imputaciones/saldo y estado del recibo. Datos inconsistentes quedan Por conciliar sin aplicar dinero.
-- TDD de evento falso, duplicado, fuera de orden, confirmación tardía, reverso y caída entre persistencia/aviso. Sin iniciar reembolsos desde la app ni conciliación bancaria masiva por extractos.
+**Estimación:** 18–28 h (2,25–3,5 d) · M1 · H (1 d) × 1,5–1,75 unidades × factor 1,5–2. Cifras de cartera deben corresponder al ledger operacional.
 
-**Tecnologías:** FastAPI, HTTPX, PostgreSQL, worker Python, pytest.
+- Consultar ocupación, inmuebles disponibles/vacantes, ingresos, obligaciones al día/vencidas y próximos vencimientos.
+- Agregar filtros por inmueble, contrato, estado y periodo, con paginación/ordenamiento donde aplique.
+- Validar sumas y estados contra movimientos y obligaciones; no duplicar contabilidad.
 
-### BE-AR-11 Pagos por otros medios y bandeja de conciliación — 18–40 h
+**Tecnologías:** FastAPI, SQLAlchemy y PostgreSQL.
 
-**Fuente:** HU-53. **Estimación:** M1 · H × 1,5–2,5; luego ×1,5–2. Confirmación manual de dinero con evidencia y control de duplicados.
+### BE-AR-10 Permisos y auditoría del módulo — 12–24 h
 
-- Registrar medio, referencia, fecha, importe y soporte privado; mantener pendiente de validación hasta confirmación explícita de administrador autorizado.
-- Aplicar movimientos mediante BE-AR-08, exigir motivo para correcciones/reversiones y conservar responsable; alertar referencias duplicadas incluso frente a pagos digitales conciliados.
-- Resolver bandeja Por conciliar solo con evidencia y correlación explícita; no permitir que un administrador declare exitoso un pago digital contradiciendo al proveedor.
-- TDD de soporte ausente, doble registro, permisos y corrección. Comprobación bancaria queda a cargo del equipo; adjuntar soporte no confirma por sí solo.
+**Estimación:** 12–24 h (1,5–3 d) · M1 · H (1 d) × 1–1,5 unidades × factor 1,5–2. No se asume que el RBAC/auditoría del producto existe.
 
-**Tecnologías:** FastAPI, PostgreSQL, servicio compartido de archivos, pytest.
+- Aplicar roles y relaciones para gerente de activos, administrador, asesor de arriendos, contador y arrendatario.
+- Registrar cambios relevantes de contrato, obligación, aplicación de pago y estado de mora con usuario/fecha.
+- Restringir acciones y datos por inmueble/contrato; pruebas de accesos permitidos y denegados.
 
-### BE-AR-12 Recordatorios y avisos de cobro — 18–40 h
+**Tecnologías:** dependencias de autorización FastAPI y auditoría transaccional en PostgreSQL/RDS.
 
-**Fuente:** HU-52. **Estimación:** M1 · H × 1,5–2,5; luego ×1,5–2. Programación con pagos concurrentes y destinatarios sensibles.
+## 3. Frontend web adaptable — 114–204 h
 
-- Generar avisos antes del vencimiento, vencido y pago sin confirmar, con bandeja in-app y correo transaccional; parámetros de antelación/frecuencia configurables y acotados.
-- Revalidar saldo/estado antes de enviar, deduplicar obligación/tipo/fecha/destinatario y registrar intentos, reintentos y rebotes; un pago conciliado cancela avisos futuros, no elimina correos ya enviados.
-- TDD de límite horario, pago concurrente, contacto inválido, aviso duplicado y reintento. En correo incluir información mínima y enlace autenticado, sin adjuntos privados ni afirmar deuda saldada por pago pendiente.
+Referencia propuesta: Next.js/TypeScript, interfaz web adaptable a celular. No se presupone aplicación móvil nativa ni componentes reutilizables comprobados.
 
-**Tecnologías:** Worker Python, PostgreSQL, AWS SES, FastAPI, pytest.
+### FE-AR-01 Gestión de alistamiento, publicación e interesados — 24–40 h
 
-### BE-AR-13 Comprobante interno de pago confirmado — 12–24 h
+**Estimación:** 24–40 h (3–5 d) · M1 · H (1 d) × 2–2,5 unidades × factor 1,5–2.
 
-**Fuente:** HU-54. **Estimación:** M1 · A2 × 1–1,5; luego ×1,5–2. Analogía parcial A2: PDF derivado de movimientos confirmados.
+- Formularios/listados de activos, alistamiento, datos comerciales, anuncio/enlace y disponibilidad.
+- Vistas de interesado, documentos, visitas, evaluación y recomendación con estados visibles.
+- Validación, errores, carga de fotos y permisos por rol.
 
-- Generar comprobante interno único por pago confirmado con contrato, arrendatario, referencia, fecha, monto y aplicación/abono; guardar snapshot y PDF privado.
-- Publicar en portal y avisar por canal BE-AR-12; reintentar generación/aviso sin duplicar recibo ni mover dinero. No emitir por pagos pendientes/fallidos.
-- Ante reverso conservar original con estado de reversión y evidencia vinculada; reflejar vigencia en consulta. TDD de doble evento, permiso y recuperación; no es factura DIAN ni certificación de paz y salvo.
+### FE-AR-02 Contrato, inventario y entrega — 18–32 h
 
-**Tecnologías:** FastAPI, renderizador PDF compartido del módulo 7, S3, pytest.
+**Estimación:** 18–32 h (2,25–4 d) · M1 · H (1 d) × 1,5–2 unidades × factor 1,5–2.
 
-### BE-AR-14 Indicadores de operación y cartera — 18–40 h
+- Capturar/revisar datos del contrato aprobado y mostrar estado de formalización.
+- Registrar inventario de entrega/devolución, observaciones y evidencia.
+- Adaptar controles a móvil y mostrar errores/estados de firma si el sistema actual los expone.
 
-**Fuente:** HU-47. **Estimación:** M1 · H × 1,5–2,5; luego ×1,5–2. Agregados monetarios y temporales sin duplicar movimientos.
+### FE-AR-03 Portal de autoservicio del arrendatario — 24–40 h
 
-- Proponer GET /api/v1/arriendos/indicadores por inmueble/contrato con ocupación, vacancia, cobros confirmados vigentes, saldo, vencidos y próximos vencimientos.
-- Definir ocupación por entrega/devolución, no por firma; ingresos operativos = pagos confirmados netos de reversos en período de pago, diferenciados de canon causado y comisiones.
-- Vacancia = días sin ocupante estando disponible; excluir alistamiento del denominador disponible y explicarlo. Exponer fecha de corte y falta de datos.
-- TDD de varias obligaciones/pagos/fotos sin multiplicar conteos, período vacío, fin de contrato con deuda y límites temporales; no calcular rentabilidad consolidada del módulo 10.
+**Estimación:** 24–40 h (3–5 d) · M1 · H (1 d) × 2–2,5 unidades × factor 1,5–2.
 
-**Tecnologías:** SQLAlchemy, PostgreSQL, Decimal, pytest.
+- Mostrar contrato, obligaciones, saldo, historial y vencimientos del usuario autenticado.
+- Diseñar estados de carga/vacío/error y acceso restringido por sesión.
+- Adaptar navegación al celular; no crear app nativa independiente.
 
-### BE-AR-15 Permisos por contrato y auditoría de negocio — 12–24 h
+### FE-AR-04 Interfaz para pagar el canon — 18–32 h
 
-**Fuente:** HU-34, HU-37, HU-38, HU-39, HU-47, HU-51, HU-53, HU-33 (dependencia). **Estimación:** M1 · H × 1–1,5; luego ×1,5–2. Datos privados, acceso del arrendatario y correcciones monetarias.
+**Estimación:** 18–32 h (2,25–4 d) · M1 · H (1 d) × 1,5–2 unidades × factor 1,5–2. Incluye estados de pago y reintentos; proveedor pendiente.
 
-- Implementar matriz de gerente de activos, asesor de arriendos, administrador de inmuebles, administrador y arrendatario sobre autenticación existente.
-- Arrendatario accede solo a sus contratos/cuenta/recibos; no a evaluaciones internas ni contratos ajenos. Propietario original no obtiene acceso operativo del activo adquirido.
-- Auditar cambios de condiciones, decisiones, entregas, imputaciones y pagos manuales con actor/fecha/motivo; comprobar matriz y atomicidad, sin duplicar pruebas de negocio ni construir consola de roles.
+- Iniciar pago de una obligación y mostrar la respuesta del proveedor o redirección segura.
+- Mostrar pendiente/confirmado/fallido, sin asumir éxito por retorno del navegador.
+- Evitar doble envío y permitir volver a consultar el estado.
 
-**Tecnologías:** Dependencias FastAPI, PostgreSQL, pytest.
+### FE-AR-05 Recibo interno descargable — 6–12 h
 
+**Estimación:** 6–12 h (0,75–1,5 d) · M1 · H (1 d) × 0,5–0,75 unidades × factor 1,5–2.
 
-## 2 Frontend — 114–240 h
+- Consultar y descargar comprobantes de pagos confirmados.
+- Mostrar referencia, fecha, valor y periodo/obligación cubiertos; etiquetar como comprobante interno, no factura DIAN.
 
-### FE-AR-01 Inventario comercial y alistamiento — 15–32 h
+### FE-AR-06 Tablero de cartera — 18–32 h
 
-**Fuente:** HU-34, HU-35, HU-36. **Estimación:** M1 · A1 × 2,5–4; luego ×1,5–2. Analogía parcial A1: lista, ficha y anuncios con permisos.
+**Estimación:** 18–32 h (2,25–4 d) · M1 · H (1 d) × 1,5–2 unidades × factor 1,5–2.
 
-- Construir listado/ficha de arriendo con elegibilidad, condiciones, adecuaciones y disponibilidad; gestionar fotos publicables, canales y enlaces manuales.
-- Mostrar por separado adquisición, ruta, ocupación y publicación; no trasladar estados del módulo 2 a disponibilidad.
-- TDD de filtros, formulario, publicación no disponible, vacíos/errores y acceso móvil/teclado; sin web pública de búsqueda.
+- Presentar filtros y métricas de ocupación, ingresos, obligaciones al día/mora y vencimientos.
+- Permitir navegar de resumen a inmueble/contrato y revisar pagos por conciliar.
+- Validar estados vacíos, permisos, carga y errores de consulta.
 
-**Tecnologías:** Next.js, TypeScript, React Hook Form, Zod, Testing Library.
+### FE-AR-07 Visualización de avisos y estados — 6–16 h
 
-### FE-AR-02 Bandeja de candidatos y visitas — 15–32 h
+**Estimación:** 6–16 h (0,75–2 d) · M1 · H (1 d) × 0,5–1 unidades × factor 1,5–2.
 
-**Fuente:** HU-37. **Estimación:** M1 · A1 × 2,5–4; luego ×1,5–2. PII, carga de documentos y decisión compartida.
+- Mostrar avisos de vencimiento, confirmación y fallas disponibles en la sesión.
+- Explicar estado de una obligación sin duplicar el envío del servicio de notificaciones.
 
-- Crear solicitud/ficha de interesado, documentos, agenda simple de visitas, resultados y recomendación; selección por administrador autorizado.
-- Reutilizar componentes de carga privada e historial existentes cuando estén comprobados; avisar duplicados y conflictos de selección.
-- TDD de archivo rechazado, permiso, validación y cambio concurrente; sin calendario externo ni CRM de adquisición duplicado.
+## 4. Infraestructura incremental y observabilidad — 24–48 h
 
-**Tecnologías:** Next.js, TypeScript, componentes privados de archivos, Testing Library.
+### OPS-AR-01 Recursos y operación de integraciones — 24–48 h
 
-### FE-AR-03 Contrato y administración de obligaciones — 18–40 h
+**Estimación:** 24–48 h (3–6 d) · M1 · H (1 d) × 2–3 unidades × factor 1,5–2. AWS e integraciones nuevas no tienen ancla comparable.
 
-**Fuente:** HU-38, HU-46. **Estimación:** M1 · A1 × 3–5; luego ×1,5–2. Formularios monetarios y cambios efectivos en el tiempo.
+- Configurar recursos incrementales para secretos/webhooks, cola o scheduler de avisos, permisos IAM mínimos y alertas.
+- Incorporar métricas/logs para errores de pagos y notificaciones sin registrar datos financieros sensibles.
+- Preparar configuración por ambiente y pruebas de despliegue/rollback.
+- Validar que el proveedor y entorno AWS del proyecto permitan la solución concreta; cambios mayores de arquitectura quedan por cotizar.
 
-- Preparar condiciones, consultar firma/archivo del módulo 7 y administrar calendario, reajuste futuro, renovación y terminación con confirmación de efectos.
-- Mostrar cargos causados frente a futuros, deuda que permanece al terminar y nueva versión contractual; no editar movimientos históricos silenciosamente.
-- TDD de fecha inválida, firma pendiente, cambio retroactivo y renovación solapada; reutilizar pantallas de firma del módulo 7.
+**Tecnologías:** AWS según arquitectura aprobada (p. ej., RDS, S3, SQS/EventBridge, Secrets Manager y CloudWatch); no se fija consumo.
 
-**Tecnologías:** Next.js, TypeScript, Zod, Testing Library.
+## 5. Validación transversal — 24–40 h
 
-### FE-AR-04 Entrega, novedades y devolución — 12–24 h
+### QA-AR-01 Recorridos integrales, seguridad y regresión — 24–40 h
 
-**Fuente:** HU-39. **Estimación:** M1 · A1 × 2–3; luego ×1,5–2. Formulario móvil de inventario con archivos e historial.
+**Estimación:** 24–40 h (3–5 d) · M1 · H (1 d) × 2–2,5 unidades × factor 1,5–2. Esta tarea valida integración completa y no vuelve a cobrar TDD/unitarias propias.
 
-- Construir acta operativa por ítems, fotografías y observaciones, lista de novedades y devolución con fecha real.
-- Reutilizar carga/estado de archivos y navegación contractual; mostrar alistamiento pendiente después de devolución.
-- TDD de reintento, permisos y doble envío; sin offline, tasación automática ni firma de acta adicional.
+- Probar flujo disponible → candidato → contrato → entrega → obligación → pago → comprobante.
+- Probar pago confirmado, pendiente, fallido, repetido, externo y por conciliar con sandbox/stubs permitidos.
+- Verificar recordatorios y tablero al día/mora frente a eventos y cálculos del backend.
+- Ejecutar pruebas de autorización entre arrendatarios/roles, regresión y aceptación con datos de prueba.
 
-**Tecnologías:** Next.js, TypeScript, File API, Testing Library.
+**Herramientas:** pytest/HTTPX para API y la herramienta de pruebas del stack frontend que el repositorio ya use; Playwright solo si está disponible/acordado.
 
-### FE-AR-05 Cartera y conciliación administrativa — 18–40 h
+## 6. Entrega y documentación — 6–16 h
 
-**Fuente:** HU-47, HU-53. **Estimación:** M1 · A1 × 3–5; luego ×1,5–2. Saldo, estados de pago y correcciones con soporte.
+### REL-AR-01 Preparar salida, manual y transferencia — 6–16 h
 
-- Crear bandeja de obligaciones/transacciones con filtros, detalle de abonos/imputación, pagos manuales y soporte, validación y resolución de excepciones.
-- Distinguir Pendiente, Confirmada, Fallida y Por conciliar; presentar reversos históricos y saldo a favor, sin acción que confirme digital por mera declaración.
-- TDD de duplicados, referencia/soporte faltante, permiso y conflicto; sin extractos bancarios masivos ni contabilidad completa.
+**Estimación:** 6–16 h (0,75–2 d) · M1 · H (1 d) × 0,5–1 unidades × factor 1,5–2.
 
-**Tecnologías:** Next.js, TypeScript, Zod, Testing Library.
+- Documentar configuración de pasarela/notificaciones, variables secretas sin valores sensibles y operación de pagos por conciliar.
+- Preparar lista de verificación para migraciones, despliegue, monitoreo y recuperación.
+- Hacer transferencia a administradores; coordinar activación productiva condicionada a aprobación del proveedor.
 
-### FE-AR-06 Portal del arrendatario, pago y comprobantes — 24–48 h
+## Base compartida, si se confirma pendiente — 48–96 h adicionales
 
-**Fuente:** HU-51, HU-52, HU-54. **Estimación:** M1 · A1 × 4–6; luego ×1,5–2. Varias vistas móviles con identidad, dinero y retorno externo.
+### SH-AR-01 Plataforma mínima reutilizable — 48–96 h
 
-- Integrar activación de cuenta existente/invitada y portal con contrato, próximos vencimientos, deuda, pagos, avisos y recibos propios.
-- Ofrecer pago/abono mediante checkout alojado; al volver consultar backend y mostrar pendiente hasta confirmación verificada, con reintento seguro cuando corresponda.
-- Descargar comprobante confirmado, indicar reversión y error de archivo; TDD de contrato ajeno, importe manipulado, URL de retorno falsa y uso móvil/teclado. Sin guardar tarjetas.
+**Estimación condicional:** 48–96 h (6–12 d) · M1 · H (1 d) × 4–6 unidades × factor 1,5–2. **No está incluida** en las 391–692 h; no cobrar si se comprueba que ya existe y funciona.
 
-**Tecnologías:** Next.js, TypeScript, autenticación compartida, checkout externo y Testing Library.
+- Confirmar/crear esqueleto API y web, ambientes, configuración y pipeline de despliegue.
+- Confirmar/crear login, roles base, RDS/PostgreSQL, migraciones y almacenamiento S3 privado, si forman parte del producto.
+- Establecer secretos, logs, alarmas y procedimiento de recuperación compartidos.
+- El tiempo de proveedores, accesos, aprobaciones y aprovisionamiento no es esfuerzo de desarrollo y se registra como espera.
 
-### FE-AR-07 Tablero de ocupación y cartera — 12–24 h
+## Tabla de complejidad
 
-**Fuente:** HU-47. **Estimación:** M1 · A1 × 2–3; luego ×1,5–2. Métricas con cortes y denominadores explícitos.
+Complejidad es una clasificación cualitativa de dependencias y riesgo; no se calcula solo a partir de horas.
 
-- Mostrar ocupación, vacancia, cobros, vencidos y vencimientos por inmueble/contrato; navegación al detalle y filtros de período/estado.
-- Explicar fecha de corte, ingresos cobrados y exclusión de alistamiento; distinguir sin datos, cero y falla.
-- TDD de filtros, permiso gerencial y consistencia de cifras; sin BI externo ni exportación analítica avanzada.
-
-**Tecnologías:** Next.js, TypeScript, componentes accesibles, Testing Library.
-
-
-## 3 Infraestructura incremental y observabilidad — 27–60 h
-
-### OPS-AR-01 Proveedor, procesos programados y correo — 18–40 h
-
-**Fuente:** HU-46, HU-51, HU-52, HU-53, HU-54. **Estimación:** M1 · H × 1,5–2,5; luego ×1,5–2. Credenciales, callbacks y trabajos sensibles recuperables.
-
-- Configurar secretos de pago, webhook HTTPS, permisos de worker/colas y ejecución periódica de cargos, conciliación y avisos sobre base existente.
-- Configurar SES transaccional con dominio verificado, plantillas de aviso/enlace de recibo, manejo de rebotes y ambientes de prueba; separar esperas por aprobación del servicio.
-- Verificar conectividad, reintentos y DLQ/reproceso sin crear otro clúster o pipeline por módulo.
-
-**Tecnologías:** Secrets Manager, IAM, ECS, SQS, EventBridge Scheduler, SES, CDK/CloudFormation.
-
-### OPS-AR-02 Archivos y observabilidad de cartera — 9–20 h
-
-**Fuente:** HU-37, HU-39, HU-53, HU-54. **Estimación:** M1 · H × 0,75–1,25; luego ×1,5–2. Datos privados y fallos de dinero/avisos que requieren visibilidad.
-
-- Extender permisos/prefijos S3 para soportes, actas y recibos; reutilizar validación/análisis de archivos ya entregados por módulos 2/6.
-- Agregar métricas de pagos sin conciliar, cargos omitidos, recibos pendientes y avisos fallidos, con alarmas de prueba; redactar PII, secretos y enlaces de pago en logs.
-- Conservar auditoría en RDS; no replicar infraestructura de escaneo ni archivo contractual del módulo 7.
-
-**Tecnologías:** S3/KMS, IAM, CloudWatch, SNS y logs estructurados.
-
-
-## 4 Validación transversal — 54–112 h
-
-### QA-AR-01 Recorrido de arriendo completo — 18–40 h
-
-**Fuente:** HU-34, HU-35, HU-36, HU-37, HU-38, HU-39, HU-46. **Estimación:** M1 · H × 1,5–2,5; luego ×1,5–2. Integración entre adquisición, candidatos, contrato y ocupación.
-
-- Ejecutar inmueble adquirido → alistamiento/anuncio → candidato/visita → selección → firma sandbox módulo 7 → entrega → reajuste/renovación → devolución/terminación.
-- Comprobar no superposición, evidencias y preservación de deuda tras cierre. Verificar integraciones reales disponibles y declarar mocks usados.
-- No repetir unitarias ni pruebas del motor genérico de firma.
-
-**Tecnologías:** Playwright, staging, sandbox de firma, datos sintéticos.
-
-### QA-AR-02 Pagos, saldos y recuperación ante fallos — 24–48 h
-
-**Fuente:** HU-46, HU-47, HU-51, HU-53, HU-54. **Estimación:** M1 · H × 2–3; luego ×1,5–2. Dinero bajo concurrencia y contrato real del proveedor.
-
-- Ejecutar pago completo/parcial/manual, sobrepago, confirmación tardía, evento repetido, reverso y conciliación; contrastar saldo/aplicaciones/recibos con conjunto conocido.
-- Inyectar caída entre confirmación e imputación/recibo y recuperar sin duplicar dinero; probar cierre de mes y ejecución programada real, migración y recuperación en staging.
-- Separar escenarios reales de sandbox de simulados; no certificar conciliación bancaria o procesamiento del proveedor fuera de evidencia disponible.
-
-**Tecnologías:** pytest/HTTPX, sandbox de pagos, PostgreSQL, S3 y CloudWatch.
-
-### QA-AR-03 Acceso móvil, avisos y aislamiento — 12–24 h
-
-**Fuente:** HU-37, HU-47, HU-51, HU-52, HU-54. **Estimación:** M1 · H × 1–1,5; luego ×1,5–2. Recorrido del arrendatario y canales de notificación reales.
-
-- Validar invitación, portal móvil, pago externo y descarga de comprobante con usuarios distintos; intentar acceso cruzado a contrato/documentos.
-- Comprobar antes de vencer/vencido/sin confirmar y supresión tras pago, reintento y rebote de correo con destinatarios de prueba.
-- Revisar accesibilidad básica y volumen acordado; sin pentest externo ni certificación formal de carga.
-
-**Tecnologías:** Playwright, SES de prueba, staging y fixtures sintéticas.
-
-
-## 5 Entrega — 12–24 h
-
-### REL-AR-01 Activación y entrega operativa — 12–24 h
-
-**Fuente:** HU-34, HU-35, HU-36, HU-37, HU-38, HU-39, HU-46, HU-47, HU-51, HU-52, HU-53, HU-54. **Estimación:** M1 · H × 1–1,5; luego ×1,5–2. Activar cartera, pagos y avisos requiere coordinación y evidencia.
-
-- Preparar migraciones/configuración productiva, habilitación por etapas de cobros/avisos, smoke y reconciliación de partida mediante pipeline existente.
-- Entregar OpenAPI, ADR, guía de administrador/arrendatario y procedimientos para pagos inciertos, reversos, correo y cierre; registrar aceptación y evidencia.
-- Separar contratación de proveedor, credenciales, aprobación de políticas y tiempos de firma/pago de las horas-persona. Esta estimación no cobra ni notifica a arrendatarios reales.
-
-**Tecnologías:** Git, pipeline AWS, OpenAPI y Markdown.
-
-## 6 Dependencias y base compartida
-
-| Dependencia | Qué se reutiliza | Qué se cotiza aquí |
+| Tamaño | Trabajo representativo | Motivo |
 |---|---|---|
-| Módulo 2 | Adquisición, inmueble, autorización de ruta y carga privada | Consumo de elegibilidad, vínculos y adaptación de archivos a candidatos/actas |
-| Módulo 6, cuando hay obras | Estado de adecuaciones y evidencias existentes | Referencia y verificación operativa de alistamiento, no gestión de obra |
-| Módulo 7 | Plantilla de arriendo, firma, archivo contractual y renderizador PDF | Mapeo de condiciones, acceso de arrendatario, consulta de formalización y plantilla de recibo interno |
-| Autenticación/HU-33 | Sesión, invitación/activación y roles base | Vincular arrendatario a sus contratos y permisos específicos |
-| Módulo 10, consumidor futuro | Contabilidad y facturación fuera de este alcance | IDs/consultas de movimientos para evitar duplicados; no integración contable completa |
+| S | Comprobante interno, vista de aviso o configuración de un campo comercial | Alcance acotado; aun así requiere permisos y comprobación del estado. |
+| M | Alistamiento/interesados, inventario/entrega, portal y tablero | Cruza varias vistas/endpoints y roles, con integración en la operación del inmueble. |
+| L | Ledger de cánones, pasarela/webhooks, conciliación y reglas de mora | Dinero, idempotencia, estados asíncronos, exactitud de saldos y dependencia de terceros. |
 
-La documentación no prueba implementación de esas dependencias. Si falta el módulo 7, sus **267–564 h** según la [épica contractual](contratos-firma-epica.md) se consideran aparte una sola vez y se revisan al consolidar. Este módulo no hereda otra vez ese costo. Si falta elegibilidad o servicio de archivos, presupuestar las partidas necesarias de adquisición/archivos, sin asumir que 78–176 h de infraestructura las resuelven.
+## Supuestos y exclusiones
 
-La base técnica pendiente se toma de [BASE-01 a BASE-05 del módulo 2](ficha-inmueble-epica.md#6-base-compartida-si-aún-no-está-implementada): **78–176 h**, una sola vez para el producto. Incluye infraestructura/pipeline/pruebas/logs y adaptación de autenticación existente. BASE-03 no construye login desde cero; esa variante requiere reestimación sin sumar ambas. No volver a cobrar base AWS, motor de escaneo, firma o renderizador por cada módulo.
+- El inmueble ya fue adquirido por la compañía y asignado a la ruta de arriendo; adquisición y obras no se vuelven a estimar aquí.
+- Se estima una web adaptable a móvil. No se estima aplicación nativa.
+- El anuncio y sus enlaces se administran manualmente; no hay sincronización automática con portales inmobiliarios.
+- Se contempla una pasarela, todavía por seleccionar, y el comprobante es interno. Factura electrónica DIAN queda fuera.
+- Pagos externos se pueden registrar manualmente. Pagos parciales/reversos/mora requieren confirmar reglas antes de cerrar criterios.
+- No se incluyen varios proveedores de pago, conciliación bancaria automática, recuperación de cartera automatizada, scoring externo ni asesoría legal.
+- Los HUs están disponibles, pero los criterios Gherkin del módulo y estados exactos no constan aprobados. AN-AR-01 debe cerrarlos antes de implementar.
+- La existencia y capacidad de login, inmuebles, contratos/firma, RBAC, S3/RDS, pipeline y monitoreo son dependencias por verificar; no se descuentan como reutilización confirmada.
+- Uso/costos de AWS, pasarela y mensajería, tarifas transaccionales, impuestos y tiempos de respuesta de terceros son externos a las horas aquí estimadas.
 
-BE-AR-03/04/06/11 y OPS-AR-02 adaptan el servicio de archivos, sin construir cuarentena/antivirus desde cero. Si el CRM del módulo 5 ya aporta agenda/avisos, comprobar compatibilidad antes de descontar trabajo: candidatos de arriendo y comunicaciones de cartera tienen datos/permisos/reglas propias. La estimación no presume esa reutilización adicional.
+## Contingencias y confianza
 
-Secuencia: cerrar políticas/proveedor → modelo/permisos → alistamiento/candidatos → contrato/entrega → calendario/cuenta → pagos/conciliación → recibos/avisos → indicadores → validación/activación. Frontend puede avanzar con contratos API acordados. Faltan capacidades/equipo para fijar calendario; los días expresan esfuerzo, no fecha de entrega.
-
-## 7 Complejidad
-
-| Grupo | S/M/L | Motivo |
-|---|---|---|
-| Ficha, anuncios y candidatos | M | Datos privados, selección y disponibilidad |
-| Contrato y ciclo operativo | L | Firma dependiente, vigencias, entrega y cierre |
-| Obligaciones y cuenta corriente | L | Fechas, abonos, ajustes e invariantes de dinero |
-| Pagos y conciliación | L | Proveedor, eventos, concurrencia y reversos |
-| Portal, avisos y recibos | L | Varios recorridos móviles y estados consistentes |
-| Indicadores y operación | M | Cortes, conteos, recuperación y trazabilidad |
-
-S/M/L expresa complejidad relativa y no se convierte automáticamente a horas.
-
-## 8 Contingencias, consumo y entrega
-
-- **Reserva condicionada:** 0–4 h, una sola vez fuera del total base, ante ajuste acotado de ID/campo en contrato de adquisición o firma ya entregado. Dueño: responsable de integración. Totales con esa condición: **513–1104 h** con dependencias funcionales o **591–1280 h** agregando toda la base técnica. No cubre proveedor incompatible, nuevos medios, reglas financieras adicionales ni construir módulos faltantes. No sumar reserva porcentual sobre el mismo riesgo de M1.
-- **Consumo AWS separado:** API/web/worker, RDS, S3/versiones/transferencia, KMS, SQS, EventBridge Scheduler, Secrets Manager, SES y CloudWatch. Se requiere región, volumen de contratos/pagos/correos, tamaño de archivos, concurrencia y retención para dimensionar costos monetarios.
-- **Servicios externos separados:** tarifas y comisiones del proveedor de pagos, transacciones de firma del módulo 7 y cualquier licencia contratada. Sin proveedor y volumen no se inventan precios ni capacidades. Importe pagado por arrendatario, comisión y liquidación al comercio son conceptos separados.
-- **Esperas:** aprobación de reglas/plantillas, contratación y alta de pagos, credenciales/sandbox, dominio/SES y aceptación de negocio. No forman horas de desarrollo ni garantizan disponibilidad inmediata.
-- **Aceptación:** validar supuestos/Gherkin, conservar ADR y evidencia de escenarios reales frente a simulaciones, y recalibrar con horas reales. Esta entrega documenta una cotización; no activa cobros, contratos ni notificaciones reales.
+El rango 391–692 h no tiene una reserva porcentual genérica adicional: los riesgos de dinero, permisos, datos personales y patrón nuevo ya están reflejados una sola vez mediante M1. Si la inspección confirma que la base compartida falta, agregar solo SH-AR-01 (48–96 h). Si el contrato/pasarela seleccionados no permiten el flujo previsto y requieren una corrección acotada, revisar esa tarea y considerar hasta 0,5 d adicional bajo esa condición; no sumar como reserva automática. Confianza **baja** hasta validar stack, reutilización, proveedor de pago, reglas de cobro y criterios Gherkin. Registrar horas reales al terminar para recalibrar.

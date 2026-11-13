@@ -56,7 +56,7 @@
 * **HU-22:** **COMO** administrador, **QUIERO** que los contratos firmados queden archivados con su trazabilidad, **PARA** poder probar su validez si hay un conflicto.
 
 ### Módulo 8. Arriendo de inmuebles adquiridos
-[Épica técnica y estimación](epicas%20y%20tiempos/arriendo-inmuebles-epica.md) · [Criterios Gherkin propuestos](epicas%20y%20tiempos/arriendo-inmuebles-criterios-aceptacion.md).
+[Estimación original del merge](epicas%20y%20tiempos/arriendo-inmuebles-epica.md) · [Nuestra estimación v2](epicas%20y%20tiempos/arriendo-inmuebles-epica-v2.md) · [Criterios Gherkin propuestos de v2](epicas%20y%20tiempos/arriendo-inmuebles-criterios-aceptacion-v2.md). Son estimaciones alternativas; sus horas no se suman.
 
 * **HU-34:** **COMO** gerente de activos, **QUIERO** asignar a arriendo un inmueble cuya adquisición ya fue completada, **PARA** iniciar su ciclo de explotación como activo de la compañía.
 * **HU-35:** **COMO** administrador de inmuebles, **QUIERO** registrar el estado de alistamiento, adecuaciones, disponibilidad, canon, depósitos, servicios incluidos y condiciones del inmueble, **PARA** saber cuándo está listo y con qué condiciones puede ofrecerse.
