@@ -1,0 +1,952 @@
+{
+  "at_utc": "2026-11-17T19:45:31.864077+00:00",
+  "url": "file:///C:/Users/User/Desktop/Consultora/Casabra/casabra-documentation/cotizaciones/presentacion/index.html",
+  "checks": [
+    {
+      "name": "Flecha derecha activa mapa y mueve foco",
+      "passed": true
+    },
+    {
+      "name": "Home activa visión",
+      "passed": true
+    },
+    {
+      "name": "End activa mapa",
+      "passed": true
+    },
+    {
+      "name": "Flecha izquierda vuelve a visión",
+      "passed": true
+    },
+    {
+      "name": "Enter abre detalle y enfoca título",
+      "passed": true
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Ir al recorrido interactivo ↓"
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Reiniciar demo"
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "INPUT",
+        "id": "",
+        "text": ""
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "INPUT",
+        "id": "",
+        "text": ""
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "INPUT",
+        "id": "",
+        "text": ""
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "INPUT",
+        "id": "",
+        "text": ""
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "SUMMARY",
+        "id": "",
+        "text": "Consultar autorización de muestra"
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "INPUT",
+        "id": "",
+        "text": ""
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Crear registro e intención de venta →"
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "BUTTON",
+        "id": "close-dialog",
+        "text": "Cerrar\n×"
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Ir al recorrido interactivo ↓"
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Reiniciar demo"
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "INPUT",
+        "id": "",
+        "text": ""
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "INPUT",
+        "id": "",
+        "text": ""
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "INPUT",
+        "id": "",
+        "text": ""
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "INPUT",
+        "id": "",
+        "text": ""
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "SUMMARY",
+        "id": "",
+        "text": "Consultar autorización de muestra"
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "INPUT",
+        "id": "",
+        "text": ""
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Crear registro e intención de venta →"
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "BUTTON",
+        "id": "close-dialog",
+        "text": "Cerrar\n×"
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Ir al recorrido interactivo ↓"
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Reiniciar demo"
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "INPUT",
+        "id": "",
+        "text": ""
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "INPUT",
+        "id": "",
+        "text": ""
+      }
+    },
+    {
+      "name": "Foco permanece dentro del diálogo",
+      "passed": true,
+      "detail": {
+        "tag": "INPUT",
+        "id": "",
+        "text": ""
+      }
+    },
+    {
+      "name": "Foco inverso permanece dentro del diálogo",
+      "passed": true
+    },
+    {
+      "name": "Foco inverso permanece dentro del diálogo",
+      "passed": true
+    },
+    {
+      "name": "Foco inverso permanece dentro del diálogo",
+      "passed": true
+    },
+    {
+      "name": "Foco inverso permanece dentro del diálogo",
+      "passed": true
+    },
+    {
+      "name": "Foco inverso permanece dentro del diálogo",
+      "passed": true
+    },
+    {
+      "name": "Foco inverso permanece dentro del diálogo",
+      "passed": true
+    },
+    {
+      "name": "Foco inverso permanece dentro del diálogo",
+      "passed": true
+    },
+    {
+      "name": "Foco inverso permanece dentro del diálogo",
+      "passed": true
+    },
+    {
+      "name": "Foco inverso permanece dentro del diálogo",
+      "passed": true
+    },
+    {
+      "name": "Foco inverso permanece dentro del diálogo",
+      "passed": true
+    },
+    {
+      "name": "Foco inverso permanece dentro del diálogo",
+      "passed": true
+    },
+    {
+      "name": "Foco inverso permanece dentro del diálogo",
+      "passed": true
+    },
+    {
+      "name": "Foco inverso permanece dentro del diálogo",
+      "passed": true
+    },
+    {
+      "name": "Foco inverso permanece dentro del diálogo",
+      "passed": true
+    },
+    {
+      "name": "Foco inverso permanece dentro del diálogo",
+      "passed": true
+    },
+    {
+      "name": "Escape cierra detalle",
+      "passed": true
+    },
+    {
+      "name": "Cierre devuelve foco al disparador",
+      "passed": true
+    },
+    {
+      "name": "Cierre conserva scroll de origen",
+      "passed": true,
+      "detail": {
+        "before": 1919,
+        "after": 1919
+      }
+    },
+    {
+      "name": "Consentimiento impide registro vacío",
+      "passed": true
+    },
+    {
+      "name": "Registro recibe la misma persona e inmueble",
+      "passed": true
+    },
+    {
+      "name": "Registro no adquiere inmueble",
+      "passed": true
+    },
+    {
+      "name": "Identidad pendiente visible sin aprobación",
+      "passed": true
+    },
+    {
+      "name": "Identidad fallida ofrece reintento",
+      "passed": true
+    },
+    {
+      "name": "Actividad guardada vinculada a misma persona",
+      "passed": true
+    },
+    {
+      "name": "Compromiso con fecha y responsable",
+      "passed": true
+    },
+    {
+      "name": "Compromiso puede completarse",
+      "passed": true
+    },
+    {
+      "name": "Etapa comercial no altera adquisición",
+      "passed": true
+    },
+    {
+      "name": "Gerencia no completa documentos del propietario",
+      "passed": true
+    },
+    {
+      "name": "Documentación completa inicia En estudio",
+      "passed": true
+    },
+    {
+      "name": "Propietaria no registra estudio jurídico",
+      "passed": true
+    },
+    {
+      "name": "Estudio conserva actor autorizado",
+      "passed": true
+    },
+    {
+      "name": "Asesor envía propuesta",
+      "passed": true
+    },
+    {
+      "name": "Asesor no acepta oferta del propietario",
+      "passed": true
+    },
+    {
+      "name": "Aceptación solo inicia compra",
+      "passed": true
+    },
+    {
+      "name": "Gerencia no confirma compra ni asigna ruta antes de adquisición",
+      "passed": true
+    },
+    {
+      "name": "Abogada confirma adquisición",
+      "passed": true
+    },
+    {
+      "name": "Abogada no asigna ruta gerencial",
+      "passed": true
+    },
+    {
+      "name": "Gerencia asigna Venta con adecuaciones tras compra",
+      "passed": true
+    },
+    {
+      "name": "Historial conserva estados y responsables",
+      "passed": true
+    },
+    {
+      "name": "Ruta completada permite seguir al mapa de operación",
+      "passed": true
+    },
+    {
+      "name": "LeanCore simula Recibido por proveedor",
+      "passed": true
+    },
+    {
+      "name": "LeanCore no altera adquisición en Recibido por proveedor",
+      "passed": true
+    },
+    {
+      "name": "LeanCore simula Pendiente de revisión",
+      "passed": true
+    },
+    {
+      "name": "LeanCore no altera adquisición en Pendiente de revisión",
+      "passed": true
+    },
+    {
+      "name": "Pendiente no representa aprobación/desembolso",
+      "passed": true
+    },
+    {
+      "name": "LeanCore simula Proveedor no disponible",
+      "passed": true
+    },
+    {
+      "name": "LeanCore no altera adquisición en Proveedor no disponible",
+      "passed": true
+    },
+    {
+      "name": "Fallo financiero permite reintento sin aprobar",
+      "passed": true
+    },
+    {
+      "name": "LeanCore simula Respuesta recibida",
+      "passed": true
+    },
+    {
+      "name": "LeanCore no altera adquisición en Respuesta recibida",
+      "passed": true
+    },
+    {
+      "name": "Detalle opcional works conserva horas/alcance/dependencia",
+      "passed": true
+    },
+    {
+      "name": "Selección opcional works accesible y reversa",
+      "passed": true
+    },
+    {
+      "name": "Detalle opcional contracts conserva horas/alcance/dependencia",
+      "passed": true
+    },
+    {
+      "name": "Selección opcional contracts accesible y reversa",
+      "passed": true
+    },
+    {
+      "name": "Detalle opcional rent conserva horas/alcance/dependencia",
+      "passed": true
+    },
+    {
+      "name": "Selección opcional rent accesible y reversa",
+      "passed": true
+    },
+    {
+      "name": "Detalle opcional sale conserva horas/alcance/dependencia",
+      "passed": true
+    },
+    {
+      "name": "Selección opcional sale accesible y reversa",
+      "passed": true
+    },
+    {
+      "name": "Detalle opcional portal conserva horas/alcance/dependencia",
+      "passed": true
+    },
+    {
+      "name": "Selección opcional portal accesible y reversa",
+      "passed": true
+    },
+    {
+      "name": "Detalle opcional payments conserva horas/alcance/dependencia",
+      "passed": true
+    },
+    {
+      "name": "Selección opcional payments accesible y reversa",
+      "passed": true
+    },
+    {
+      "name": "Detalle opcional financial conserva horas/alcance/dependencia",
+      "passed": true
+    },
+    {
+      "name": "Selección opcional financial accesible y reversa",
+      "passed": true
+    },
+    {
+      "name": "Los7 opcionales se agregan sin alterar cotización base",
+      "passed": true
+    },
+    {
+      "name": "Selección se puede quitar",
+      "passed": true
+    },
+    {
+      "name": "Fase3 sin precio/horas y costos correctamente contextualizados",
+      "passed": true
+    },
+    {
+      "name": "Panel onboarding cabe a375px",
+      "passed": true,
+      "detail": {
+        "width": 337,
+        "scrollWidth": 337,
+        "left": 19,
+        "right": 356
+      }
+    },
+    {
+      "name": "Panel crm cabe a375px",
+      "passed": true,
+      "detail": {
+        "width": 337,
+        "scrollWidth": 337,
+        "left": 19,
+        "right": 356
+      }
+    },
+    {
+      "name": "Panel acquisition cabe a375px",
+      "passed": true,
+      "detail": {
+        "width": 337,
+        "scrollWidth": 337,
+        "left": 19,
+        "right": 356
+      }
+    },
+    {
+      "name": "Panel external cabe a375px",
+      "passed": true,
+      "detail": {
+        "width": 337,
+        "scrollWidth": 337,
+        "left": 19,
+        "right": 356
+      }
+    },
+    {
+      "name": "Panel rent cabe a375px",
+      "passed": true,
+      "detail": {
+        "width": 337,
+        "scrollWidth": 337,
+        "left": 19,
+        "right": 356
+      }
+    },
+    {
+      "name": "Panel onboarding cabe a768px",
+      "passed": true,
+      "detail": {
+        "width": 730,
+        "scrollWidth": 730,
+        "left": 19,
+        "right": 749
+      }
+    },
+    {
+      "name": "Panel crm cabe a768px",
+      "passed": true,
+      "detail": {
+        "width": 730,
+        "scrollWidth": 730,
+        "left": 19,
+        "right": 749
+      }
+    },
+    {
+      "name": "Panel acquisition cabe a768px",
+      "passed": true,
+      "detail": {
+        "width": 730,
+        "scrollWidth": 730,
+        "left": 19,
+        "right": 749
+      }
+    },
+    {
+      "name": "Panel external cabe a768px",
+      "passed": true,
+      "detail": {
+        "width": 730,
+        "scrollWidth": 730,
+        "left": 19,
+        "right": 749
+      }
+    },
+    {
+      "name": "Panel rent cabe a768px",
+      "passed": true,
+      "detail": {
+        "width": 730,
+        "scrollWidth": 730,
+        "left": 19,
+        "right": 749
+      }
+    },
+    {
+      "name": "Panel onboarding cabe a1024px",
+      "passed": true,
+      "detail": {
+        "width": 986,
+        "scrollWidth": 986,
+        "left": 19,
+        "right": 1005
+      }
+    },
+    {
+      "name": "Panel crm cabe a1024px",
+      "passed": true,
+      "detail": {
+        "width": 986,
+        "scrollWidth": 986,
+        "left": 19,
+        "right": 1005
+      }
+    },
+    {
+      "name": "Panel acquisition cabe a1024px",
+      "passed": true,
+      "detail": {
+        "width": 986,
+        "scrollWidth": 986,
+        "left": 19,
+        "right": 1005
+      }
+    },
+    {
+      "name": "Panel external cabe a1024px",
+      "passed": true,
+      "detail": {
+        "width": 986,
+        "scrollWidth": 986,
+        "left": 19,
+        "right": 1005
+      }
+    },
+    {
+      "name": "Panel rent cabe a1024px",
+      "passed": true,
+      "detail": {
+        "width": 986,
+        "scrollWidth": 986,
+        "left": 19,
+        "right": 1005
+      }
+    },
+    {
+      "name": "Panel onboarding cabe a1440px",
+      "passed": true,
+      "detail": {
+        "width": 1050,
+        "scrollWidth": 1050,
+        "left": 195,
+        "right": 1245
+      }
+    },
+    {
+      "name": "Panel crm cabe a1440px",
+      "passed": true,
+      "detail": {
+        "width": 1050,
+        "scrollWidth": 1050,
+        "left": 195,
+        "right": 1245
+      }
+    },
+    {
+      "name": "Panel acquisition cabe a1440px",
+      "passed": true,
+      "detail": {
+        "width": 1050,
+        "scrollWidth": 1050,
+        "left": 195,
+        "right": 1245
+      }
+    },
+    {
+      "name": "Panel external cabe a1440px",
+      "passed": true,
+      "detail": {
+        "width": 1050,
+        "scrollWidth": 1050,
+        "left": 195,
+        "right": 1245
+      }
+    },
+    {
+      "name": "Panel rent cabe a1440px",
+      "passed": true,
+      "detail": {
+        "width": 1050,
+        "scrollWidth": 1050,
+        "left": 195,
+        "right": 1245
+      }
+    },
+    {
+      "name": "Propietaria puede rechazar propuesta",
+      "passed": true
+    },
+    {
+      "name": "Abogada no rechaza como compañía sin rol asesor",
+      "passed": true
+    },
+    {
+      "name": "Rechazo compañía exige motivo",
+      "passed": true
+    },
+    {
+      "name": "Asesor rechaza inmueble durante estudio",
+      "passed": true
+    },
+    {
+      "name": "Rechazo empresa conserva motivo y autor",
+      "passed": true
+    },
+    {
+      "name": "Botón Cerrar devuelve a la página sin panel",
+      "passed": true
+    },
+    {
+      "name": "Sin errores JavaScript",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "Sin recursos fallidos",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "Sin solicitudes externas",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "failed_requests": [],
+  "network_requests": [],
+  "dialog_viewports": [
+    {
+      "viewport": 375,
+      "module": "onboarding",
+      "passed": true,
+      "width": 337,
+      "scrollWidth": 337,
+      "left": 19,
+      "right": 356
+    },
+    {
+      "viewport": 375,
+      "module": "crm",
+      "passed": true,
+      "width": 337,
+      "scrollWidth": 337,
+      "left": 19,
+      "right": 356
+    },
+    {
+      "viewport": 375,
+      "module": "acquisition",
+      "passed": true,
+      "width": 337,
+      "scrollWidth": 337,
+      "left": 19,
+      "right": 356
+    },
+    {
+      "viewport": 375,
+      "module": "external",
+      "passed": true,
+      "width": 337,
+      "scrollWidth": 337,
+      "left": 19,
+      "right": 356
+    },
+    {
+      "viewport": 375,
+      "module": "rent",
+      "passed": true,
+      "width": 337,
+      "scrollWidth": 337,
+      "left": 19,
+      "right": 356
+    },
+    {
+      "viewport": 768,
+      "module": "onboarding",
+      "passed": true,
+      "width": 730,
+      "scrollWidth": 730,
+      "left": 19,
+      "right": 749
+    },
+    {
+      "viewport": 768,
+      "module": "crm",
+      "passed": true,
+      "width": 730,
+      "scrollWidth": 730,
+      "left": 19,
+      "right": 749
+    },
+    {
+      "viewport": 768,
+      "module": "acquisition",
+      "passed": true,
+      "width": 730,
+      "scrollWidth": 730,
+      "left": 19,
+      "right": 749
+    },
+    {
+      "viewport": 768,
+      "module": "external",
+      "passed": true,
+      "width": 730,
+      "scrollWidth": 730,
+      "left": 19,
+      "right": 749
+    },
+    {
+      "viewport": 768,
+      "module": "rent",
+      "passed": true,
+      "width": 730,
+      "scrollWidth": 730,
+      "left": 19,
+      "right": 749
+    },
+    {
+      "viewport": 1024,
+      "module": "onboarding",
+      "passed": true,
+      "width": 986,
+      "scrollWidth": 986,
+      "left": 19,
+      "right": 1005
+    },
+    {
+      "viewport": 1024,
+      "module": "crm",
+      "passed": true,
+      "width": 986,
+      "scrollWidth": 986,
+      "left": 19,
+      "right": 1005
+    },
+    {
+      "viewport": 1024,
+      "module": "acquisition",
+      "passed": true,
+      "width": 986,
+      "scrollWidth": 986,
+      "left": 19,
+      "right": 1005
+    },
+    {
+      "viewport": 1024,
+      "module": "external",
+      "passed": true,
+      "width": 986,
+      "scrollWidth": 986,
+      "left": 19,
+      "right": 1005
+    },
+    {
+      "viewport": 1024,
+      "module": "rent",
+      "passed": true,
+      "width": 986,
+      "scrollWidth": 986,
+      "left": 19,
+      "right": 1005
+    },
+    {
+      "viewport": 1440,
+      "module": "onboarding",
+      "passed": true,
+      "width": 1050,
+      "scrollWidth": 1050,
+      "left": 195,
+      "right": 1245
+    },
+    {
+      "viewport": 1440,
+      "module": "crm",
+      "passed": true,
+      "width": 1050,
+      "scrollWidth": 1050,
+      "left": 195,
+      "right": 1245
+    },
+    {
+      "viewport": 1440,
+      "module": "acquisition",
+      "passed": true,
+      "width": 1050,
+      "scrollWidth": 1050,
+      "left": 195,
+      "right": 1245
+    },
+    {
+      "viewport": 1440,
+      "module": "external",
+      "passed": true,
+      "width": 1050,
+      "scrollWidth": 1050,
+      "left": 195,
+      "right": 1245
+    },
+    {
+      "viewport": 1440,
+      "module": "rent",
+      "passed": true,
+      "width": 1050,
+      "scrollWidth": 1050,
+      "left": 195,
+      "right": 1245
+    }
+  ],
+  "summary": {
+    "passed": 126,
+    "failed": 0,
+    "total": 126
+  }
+}

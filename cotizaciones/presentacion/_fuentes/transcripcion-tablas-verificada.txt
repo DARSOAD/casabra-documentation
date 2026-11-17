@@ -1,0 +1,48 @@
+TRANSCRIPCIÓN VISUAL COMPLEMENTARIA DEL PDF V2
+Fuente: Cotización CASABRA V2.pdf, 17/11/2026, 11 páginas.
+Esta transcripción cubre celdas convertidas a curvas que no aparecen en extracción automática.
+
+PÁGINA 3
+1. Onboarding y vinculación -> Clientes identificados, inmuebles documentados y seguimiento comercial organizado.
+2. Operación conectada -> Gestión de obras, contratos, arriendos, ventas y resultados, con apoyo de un proveedor financiero cuando se habilite esa línea.
+3. Evolución financiera -> Desarrollo del núcleo financiero propio, a partir del modelo de negocio y la experiencia acumulada.
+
+PÁGINA 4
+1. Onboarding registro y conocimiento del cliente | 600 horas
+2. Adquisición de inmuebles | 400 horas
+3. Seguimiento comercial - CRM | 460 horas
+
+PÁGINA 5
+Una vez disponible la base, se podrá priorizar los módulos que generen mayor valor para su operación.
+La selección se realizará según las necesidades del negocio y las dependencias entre módulos.
+Por ejemplo, la firma electrónica debe estar disponible para los procesos que la requieran, y la gestión de arriendos parte de inmuebles cuya adquisición ya se completó.
+Para comenzar la operación financiera, se propone conectar la plataforma con un proveedor especializado que ya cuente con las herramientas para administrar los créditos. Las funciones disponibles dependerán del servicio contratado y del alcance acordado.
+
+PÁGINA 6
+1. Proyectos de obra | 520 horas
+2. Contratos y firma electrónica | 430 horas
+3. Arriendo de inmuebles adquiridos | 900 horas
+4. Venta de inmuebles adquiridos | 820 horas
+5. Portal del cliente | 500 horas
+
+PÁGINA 7
+6. Pagos y utilidades | 730 horas
+7. Conexión con proveedor financiero | 100 horas
+Nombre y logo: LeanCore
+Cargo mínimo del servicio mensual | 1.500 USD
+Administración de cada crédito | 0,3 USD
+El PDF no aclara periodicidad del rubro por crédito ni si es adicional al mínimo mensual.
+
+PÁGINA 9
+Momento | Pago sobre el valor del módulo | Acumulado | Condición
+Antes de iniciar | 40% | 40% | Aprobación del alcance y programación del trabajo.
+Hito del 50% | 20% | 60% | Demostración y aceptación del primer entregable acordado.
+Hito del 75% | 20% | 80% | Demostración y aceptación del segundo entregable acordado.
+Entrega del 100% | 20% | 100% | Validación final y entrega del alcance contratado.
+
+VERIFICACIÓN ARITMÉTICA (derivada, no cifra contractual adicional)
+Fase1: 600+400+460 = 1460 horas
+Fase2: 520+430+900+820+500+730+100 = 4000 horas
+Fases1+2: 5460 horas
+Pago total de cada módulo: 40+20+20+20 = 100%
+Mínimo mensual anualizado: 1500x12 = 18000 USD/año; no es ahorro neto.

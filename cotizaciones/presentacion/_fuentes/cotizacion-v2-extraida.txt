@@ -1,0 +1,643 @@
+=== PÁGINA 1 ===
+ PLATAFORMA
+ INTEGRAL
+ PROPUESTA DE DESARROLLO
+ 17/11/2026
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Plataforma Integral
+
+=== PÁGINA 2 ===
+ VISIÓN DEL
+ PROYECTO
+
+  Del conocimiento del cliente
+  al crecimiento financiero
+
+
+  Se  necesita  una  plataforma  que  conecte  a
+  sus  clientes,  sus  inmuebles  y  su  operación
+  en una misma historia.
+  El    proyecto    comenzará    organizando    la
+  información que sostiene el negocio: quién
+  es   cada   cliente,   qué   autorizaciones   ha
+  otorgado,    qué    inmueble    presenta,    qué
+  evaluaciones    se    han    realizado    y    qué
+  compromisos existen con él.
+  Sobre    esta    base    se    incorporarán    las
+  herramientas  para  gestionar  la  operación
+  inmobiliaria  y,  posteriormente,  desarrollar
+  la  capacidad  financiera   propia.
+  El inmueble será el eje de la operación y la
+  información   del   cliente   será   un   activo
+  estratégico para su crecimiento
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Plataforma Integral
+
+=== PÁGINA 3 ===
+  VISIÓN DEL
+  PROYECTO
+
+  Tres fases para construir
+  y crecer
+
+
+
+
+              Fase                             Resultado  esperado
+
+                                 Clientes identificados, inmuebles
+                                 documentados y seguimiento comercial
+                                 organizado.
+
+
+
+
+ 2. Operación conectada          Gestión de obras, contratos, arriendos, ventas
+                                 y resultados, con apoyo de un proveedor
+                                 financiero cuando se habilite esa línea.
+
+
+
+                                 Desarrollo del núcleo financiero propio, a
+                                 partir del modelo de negocio y la experiencia
+                                 acumulada.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Plataforma Integral
+
+=== PÁGINA 4 ===
+                                                                  Tiempos  estimados:  Las  horas  y  los  plazos  presentados  son  aproximados  y  se
+                                                                         basan  en  la  información  disponible.  Al  finalizar  el  levantamiento  de
+                                                                      requerimientos  de  cada  módulo,  se  validarán  su  alcance,  complejidad  y
+   FASE 1                                                            dependencias  para  acordar  una  estimación  más  precisa  y  el  cronograma
+                                                                                        correspondiente  antes  de  iniciar  su  desarrollo.
+
+Onboarding y vinculación
+
+
+
+Incluye 3 Módulos en los que se logrará:
+
+     Registro y conocimiento inicial del cliente.
+     Autorizaciones de tratamiento de información.
+     Verificación   de   identidad   y   consulta   de   listas
+     mediante el proveedor acordado.
+     Expediente     y     proceso     de     adquisición     del
+     inmueble.
+     Seguimiento comercial mediante CRM.
+     Controles  transversales  de  acceso,  trazabilidad  y
+     gestión de información.
+
+
+
+           Módulo                                       Objetivo                                Tiempo
+
+                                   Facilitar el ingreso del propietario y
+                                   disponer de información inicial
+                                   confiable para comenzar la relación con
+                                   la compañía.
+
+
+2. Adquisición de                  Conservar un expediente completo y                     400 horas
+inmuebles                          una trazabilidad clara desde la
+                                   presentación del inmueble hasta su
+                                   adquisición o rechazo.
+
+
+                                   Mantener la continuidad de la relación
+                                   con cada cliente y ayudar al equipo a
+                                   identificar qué debe atender.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Plataforma Integral
+
+=== PÁGINA 5 ===
+ FASE  2
+
+Operación conectada
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Plataforma Integral
+
+=== PÁGINA 6 ===
+                                                                          Tiempos  estimados:  Las  horas  y  los  plazos  presentados  son  aproximados  y  se
+                                                                                 basan  en  la  información  disponible.  Al  finalizar  el  levantamiento  de
+                                                                              requerimientos  de  cada  módulo,  se  validarán  su  alcance,  complejidad  y
+   FASE  2                                                                   dependencias  para  acordar  una  estimación  más  precisa  y  el  cronograma
+                                                                                                  correspondiente  antes  de  iniciar  su  desarrollo.
+
+Módulos propuestos
+
+
+
+
+            Módulo                                             Objetivo                                     Tiempo
+
+                                       Presupuestos, cronogramas,
+                                       responsables, fotografías, avances,
+                                       permisos y alertas de desviación.
+
+
+
+
+2. Contratos y firma                   Plantillas acordadas, revisión y firma                        430 horas
+electrónica                            desde el celular, archivo y trazabilidad.
+
+
+
+
+                                       Alistamiento, oferta comercial,
+                                       interesados, contratación, entrega,
+                                       obligaciones, pagos, cartera y
+                                       autoservicio del arrendatario.
+
+
+                                       Preparación comercial, canales
+                                       definidos, prospectos, visitas, ofertas,
+                                       negociación, documentos y cierre.
+
+
+
+
+5. Portal del cliente                  Consulta de información e hitos                               500 horas
+                                       autorizados para el propietario original,
+                                       y reportes gerenciales.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Plataforma Integral
+
+=== PÁGINA 7 ===
+                                                                               Tiempos  estimados:  Las  horas  y  los  plazos  presentados  son  aproximados  y  se
+                                                                                       basan  en  la  información  disponible.  Al  finalizar  el  levantamiento  de
+                                                                                    requerimientos  de  cada  módulo,  se  validarán  su  alcance,  complejidad  y
+    FASE  2                                                                        dependencias  para  acordar  una  estimación  más  precisa  y  el  cronograma
+                                                                                                         correspondiente  antes  de  iniciar  su  desarrollo.
+
+
+
+ Módulos propuestos
+
+
+
+
+
+
+
+              Módulo                                               Objetivo                                        Tiempo
+
+                                          Costos e ingresos por inmueble o
+                                          proyecto, rentabilidad y facturación
+                                          mediante el servicio que se acuerde.
+
+
+
+
+ 7. Conexión con                          Uso de las funciones financieras                                 100 horas
+ proveedor financiero                     contratadas con un tercero desde el
+                                          recorrido acordado para Casabra.
+
+
+
+
+
+
+
+Proponemos conectar Casabra con LeanCore, una plataforma
+especializada en creación, administración y recaudo de créditos. Este
+apoyo permitirá comenzar con las funciones contratadas y adquirir
+experiencia operativa mientras avanzamos hacia el núcleo financiero
+propio de Casabra.
+
+
+
+                  Concepto                              Valor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Plataforma Integral
+
+=== PÁGINA 8 ===
+ FASE 3
+ CORE
+ FINANCIERO
+
+   Evolución financiera
+
+
+   Transformar    la    información    en    oportunidades    de
+   crecimiento.
+
+   Construiremos el núcleo financiero propio de la
+   compañía,  aprovechando  su  base  de  clientes  y
+   el  conocimiento  acumulado  de  sus  inmuebles  y
+   operaciones     para     ofrecer     soluciones         de
+   financiación.
+
+   La    plataforma    permitirá    gestionar    créditos,
+   desembolsos,     pagos     y     cartera,     y     crecer
+   progresivamente       con       nuevos         productos
+   financieros.
+
+   Una   nueva   línea   de   negocio   para   generar
+   ingresos  recurrentes  y  ampliar  el  valor  de  cada
+   relación con sus clientes.
+
+
+
+
+
+
+
+
+
+
+
+
+Plataforma Integral
+
+=== PÁGINA 9 ===
+  MODALIDAD DE
+  PAGO Y FLUJO
+  DE TRABAJO
+
+
+
+
+
+
+
+
+
+
+
+   Momento           Pago sobre el valor del móduloAcumulado       Condición
+
+                                                        Aprobación del alcance y
+                                                        programación del trabajo.
+
+
+
+
+
+                                                        Demostración y aceptación del
+                                                        primer entregable acordado.
+
+
+
+
+
+                                                        Demostración y aceptación del
+                                                        segundo entregable acordado.
+
+
+
+
+
+
+                                                        Validación final y entrega del
+                                                        alcance contratado.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Plataforma Integral
+
+=== PÁGINA 10 ===
+ MODALIDAD DE
+ PAGO Y FLUJO
+ DE TRABAJO
+
+
+ ¿Cómo se comprobará cada
+ entrega?
+
+
+ Cada hito tendrá:
+
+     Funciones    concretas    acordadas    antes    de
+     iniciar.
+     Una demostración con casos representativos.
+     Acceso         al         entorno         de         revisión
+     correspondiente.
+     Registro   de   observaciones   y   validación   del
+     entregable.
+
+ El primer hito incluirá un recorrido que el cliente
+ pueda utilizar y entender. Hasta llegar a él, habrá
+ avances   de   revisión   sobre   pantallas,   reglas   y
+ procesos.
+
+ La entrega final incluirá la validación completa, la
+ puesta  en  marcha  acordada  y  la  orientación  de
+ uso prevista en el alcance.
+
+
+
+
+
+
+
+
+
+
+
+Plataforma Integral
+
+=== PÁGINA 11 ===
+  EL FUTURO
+  EMPIEZA CON
+  LA INFORMACIÓN
+
+
+
+
+   CADA CLIENTE, CADA INMUEBLE Y CADA OPERACIÓN
+   APORTAN VALOR. ESTA PLATAFORMA CONECTARÁ ESE
+   CONOCIMIENTO PARA ORGANIZAR EL PRESENTE Y ABRIR
+   NUEVAS OPORTUNIDADES DE NEGOCIO.
+
+
+   UNA INVERSIÓN CON VISIÓN DE CRECIMIENTO:
+
+
+
+      Información que construye valor: Una base organizada de clientes, inmuebles y
+      relaciones comerciales para conocer mejor a cada persona, identificar sus
+      necesidades y dar continuidad a cada oportunidad.
+      Control y trazabilidad de la operación: Documentos, evaluaciones, responsables y
+      decisiones conectados en una misma historia. Su equipo podrá conocer qué ha
+      ocurrido, qué está pendiente y cuál es el siguiente paso.
+      Herramientas pensadas para su equipo: Una plataforma clara y accesible, con
+      funciones y permisos según cada rol, para facilitar el trabajo diario y mantener la
+      información disponible para quienes la necesitan.
+      Inversión por etapas, resultados verificables: Módulos con alcance definido y
+      entregas al 50 %, 75 % y 100 %. Cada etapa permitirá comprobar avances y priorizar
+      los siguientes desarrollos según las necesidades de la compañia.
+      Capacitación y respaldo técnico: Orientación para utilizar las funciones entregadas y
+      acompañamiento durante la puesta en marcha, con garantía y soporte bajo las
+      condiciones acordadas.
+      El camino hacia La Plataforma Financiera: El conocimiento acumulado será la base
+      para desarrollar soluciones de financiación propias. Una evolución progresiva hacia
+      créditos, pagos y cartera, con potencial para generar ingresos recurrentes y ampliar
+      el valor de cada cliente.
+
+  Construimos con Casabra la plataforma que conecta su experiencia inmobiliaria con su
+  próxima oportunidad de crecimiento financiero.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Plataforma Integral

@@ -1,0 +1,87 @@
+﻿<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Casabra: propuesta de plataforma integral y mapa de evolución. Presentación y demostración local.">
+  <title>Casabra · Plataforma integral</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Casabra, inicio"><img src="assets/casabra-logo-provisional-negro.png" alt="CASABRA"></a>
+    <span class="header-note">Propuesta de desarrollo <span>17 / 11 / 2026</span></span>
+    <button class="button text" id="reset-demo">Reiniciar demo</button>
+  </header>
+  <nav class="tabs" role="tablist" aria-label="Contenido de la propuesta">
+    <button class="tab" id="tab-vision" role="tab" aria-controls="vision" aria-selected="true" tabindex="0">Visión y propuesta inicial</button>
+    <button class="tab" id="tab-evolution" role="tab" aria-controls="evolution" aria-selected="false" tabindex="-1">Mapa de evolución</button>
+  </nav>
+  <main id="main">
+    <section id="vision" class="panel" role="tabpanel" aria-labelledby="tab-vision">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Una plataforma. Una misma historia.</p>
+          <h1>La información<br>construye <em>futuro.</em></h1>
+          <p class="hero-lead">Conectamos clientes, inmuebles y operación para organizar el presente de Casabra y abrir su próxima oportunidad de crecimiento financiero.</p>
+          <div class="hero-actions"><button class="button primary" data-scroll="base">Explorar la propuesta <span aria-hidden="true">↗</span></button><button class="button secondary" data-tab="evolution">Ver el camino completo <span aria-hidden="true">→</span></button></div>
+          <p class="hero-caption">Plataforma integral · Desarrollo por etapas · Resultados verificables</p>
+        </div>
+        <div class="hero-visual" aria-label="Ilustración conceptual: clientes, inmuebles y operación conectados">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="visual-label label-top"><span class="dot"></span> Conocimiento del cliente</div>
+          <div class="hero-building" aria-hidden="true"><div class="building-roof"></div><div class="building-face"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="building-side"></div><div class="building-base"></div></div>
+          <div class="visual-label label-bottom"><span class="dot"></span> El inmueble, eje de la operación</div>
+          <span class="visual-index">CASABRA / VISIÓN 2026</span>
+        </div>
+      </section>
+      <section class="section intro">
+        <div class="section-heading"><p class="eyebrow">El punto de partida</p><h2>De información dispersa<br>a decisiones conectadas.</h2></div>
+        <div class="intro-grid"><p class="statement">Quién es cada cliente. Qué inmueble presenta. Qué se ha evaluado. Qué compromiso sigue.</p><div><p>La primera fase organiza la información que sostiene el negocio. Cada documento, contacto y decisión forma parte de un expediente con responsables y trazabilidad.</p><p class="muted">Sobre esa base, Casabra podrá incorporar su operación inmobiliaria y desarrollar progresivamente una capacidad financiera propia.</p></div></div>
+      </section>
+      <section class="section" id="base">
+        <div class="section-heading"><p class="eyebrow">Fase 01 · Onboarding y vinculación</p><h2>Una base que empieza<br>a trabajar desde el primer día.</h2><p>Tres módulos conectados. Explore el alcance y pruebe un recorrido ilustrativo con Laura Méndez y su inmueble CAS-024.</p></div>
+        <div class="module-grid">
+          <article class="module-card"><span class="module-number">01 / IDENTIFICAR</span><h3>Onboarding</h3><p>Conocer al cliente y comenzar la relación con información inicial confiable y autorizada.</p><div class="module-meta"><span>600 horas estimadas</span><span>Propietaria · Cumplimiento</span></div><button class="button secondary" data-module="onboarding">Conocer y probar <span aria-hidden="true">↗</span></button></article>
+          <article class="module-card"><span class="module-number">02 / DAR CONTINUIDAD</span><h3>CRM</h3><p>Conservar el contexto de cada relación y ayudar al equipo a identificar qué debe atender.</p><div class="module-meta"><span>460 horas estimadas</span><span>Asesor · Gerente</span></div><button class="button secondary" data-module="crm">Conocer y probar <span aria-hidden="true">↗</span></button></article>
+          <article class="module-card"><span class="module-number">03 / TOMAR DECISIONES</span><h3>Adquisición de inmueble</h3><p>Conectar expediente, evaluación y decisión hasta completar la compra o registrar el rechazo.</p><div class="module-meta"><span>400 horas estimadas</span><span>Propietaria · Asesor · Abogada · Gerente</span></div><button class="button secondary" data-module="acquisition">Conocer y probar <span aria-hidden="true">↗</span></button></article>
+        </div>
+        <div class="connection-strip"><span>Cliente identificado</span><b aria-hidden="true">→</b><span>Relación con seguimiento</span><b aria-hidden="true">→</b><span>Inmueble con trazabilidad</span></div>
+        <p class="notice">Demostración con datos ficticios. Los cambios se conservan mientras esta página permanece abierta. No crea cuentas, no carga archivos ni contacta proveedores.</p>
+      </section>
+      <section class="section initial-connection">
+        <div class="section-heading"><p class="eyebrow">Una arquitectura que conecta</p><h2>Información propia.<br>Capacidad financiera conectada.</h2><p>La base de Casabra conserva el contexto del cliente, el inmueble y su operación; el proveedor aporta las funciones financieras contratadas.</p></div>
+        <div class="connection-strip"><span><strong>CASABRA</strong><br>Clientes · CRM · Inmuebles<br><small>Componentes propios</small></span><b aria-hidden="true">↔</b><span><strong>API conceptual</strong><br>Intercambio por definir</span><b aria-hidden="true">↔</b><span><strong>LeanCore</strong><br>Créditos · Administración · Recaudo<br><small>Proveedor externo</small></span></div>
+        <p class="notice">Conexión mostrada desde el inicio; cotizada en fase 2 (100 horas). Adelantarla requiere acordar alcance y cronograma. Responsabilidades, datos compartidos y condiciones del proveedor pendientes de definición.</p>
+        <button class="button secondary" data-module="external">Explorar intercambio simulado <span aria-hidden="true">↗</span></button>
+      </section>
+      <section class="section investment">
+        <div class="section-heading"><p class="eyebrow">Propuesta inicial</p><h2>Avanzar por módulos.<br>Validar con evidencia.</h2></div>
+        <div class="investment-grid"><article class="price-card"><span class="eyebrow">Base · Fase 1</span><p class="big-number">1.460 <span>horas</span></p><p>600 h Onboarding · 460 h CRM · 400 h Adquisición</p><p class="muted">Horas estimadas de desarrollo. El PDF no establece tarifa por hora ni precio monetario de desarrollo.</p></article><article class="terms-card"><h3>Un alcance acordado antes de comenzar</h3><p>Las horas y los plazos son aproximados y se basan en la información disponible. Al finalizar el levantamiento de requerimientos de cada módulo, se validarán alcance, complejidad y dependencias para acordar una estimación más precisa y el cronograma antes de iniciar su desarrollo.</p><p class="muted">Consumo de infraestructura y servicios de terceros se definirá por separado. No se presenta un importe AWS como parte de esta cotización.</p></article></div>
+      </section>
+      <section class="section delivery">
+        <div class="section-heading"><p class="eyebrow">Modalidad de pago y trabajo</p><h2>Entregas que se pueden comprobar.</h2><p>Porcentajes aplicados al valor acordado de cada módulo.</p></div>
+        <div class="milestones"><article><span>INICIO</span><h3>40 %</h3><p>Aprobación del alcance y programación del trabajo.</p><small>Acumulado 40 %</small></article><article><span>ENTREGA AL 50 %</span><h3>20 %</h3><p>Demostración y aceptación del primer entregable acordado.</p><small>Acumulado 60 %</small></article><article><span>ENTREGA AL 75 %</span><h3>20 %</h3><p>Demostración y aceptación del segundo entregable acordado.</p><small>Acumulado 80 %</small></article><article><span>ENTREGA AL 100 %</span><h3>20 %</h3><p>Validación final y entrega del alcance contratado.</p><small>Acumulado 100 %</small></article></div>
+        <div class="detail-grid"><div><h3>En cada hito</h3><p>Funciones concretas acordadas, demostración con casos representativos, acceso al entorno de revisión y registro de observaciones y validación.</p></div><div><h3>Del primer recorrido a la puesta en marcha</h3><p>El primer hito incluirá un recorrido utilizable. La entrega final contempla validación completa, puesta en marcha acordada y orientación de uso prevista. Garantía y soporte bajo las condiciones acordadas.</p></div></div>
+      </section>
+    </section>
+    <section id="evolution" class="panel" role="tabpanel" aria-labelledby="tab-evolution" hidden>
+      <section class="section evolution-intro"><p class="eyebrow">Visión de crecimiento</p><h1>Construir hoy.<br><em>Evolucionar con criterio.</em></h1><p class="hero-lead">Una ruta progresiva desde la vinculación del cliente hasta el núcleo financiero propio. Explore dependencias y posibles escenarios de evolución.</p></section>
+      <div class="map-legend" aria-label="Leyenda del mapa"><span class="legend-item base">Base obligatoria</span><span class="legend-item optional">Opcionales / por priorizar</span><span class="legend-item external">Proveedor externo</span><span class="legend-item future">Desarrollo futuro propio</span></div>
+      <div class="timeline">
+        <article class="phase phase-1"><div class="phase-marker">01</div><div class="phase-heading"><p class="eyebrow">Onboarding y vinculación</p><h2>La información<br>como activo.</h2><p>Clientes identificados, inmuebles documentados y seguimiento comercial organizado.</p><span class="pill">Base obligatoria · 1.460 horas estimadas</span></div><div class="phase-content"><p class="eyebrow">Componentes propios de Casabra</p><div class="phase-modules"><button class="module-node base" data-module="onboarding"><span>Onboarding</span><small>600 h · Conocer al cliente</small><b aria-hidden="true">↗</b></button><button class="module-node base" data-module="crm"><span>CRM</span><small>460 h · Continuidad comercial</small><b aria-hidden="true">↗</b></button><button class="module-node base" data-module="acquisition"><span>Adquisición de inmueble</span><small>400 h · Expediente y decisión</small><b aria-hidden="true">↗</b></button></div><div class="connection-strip map-connection"><span>Onboarding → CRM → Adquisición</span><b aria-hidden="true">↕</b><span>API conceptual ↔ LeanCore</span></div><div class="external-box"><span class="eyebrow">Conexión conceptual · Proveedor externo</span><h3>Casabra ↔ LeanCore</h3><p>Casabra conserva su información de clientes, inmuebles y operación. LeanCore aporta las funciones financieras contratadas con el tercero.</p><p class="notice">Conexión mostrada desde el inicio; cotizada en fase 2 (100 h). Adelantarla requiere acordar alcance y cronograma.</p><button class="button secondary" data-module="external">Explorar intercambio simulado <span aria-hidden="true">↗</span></button></div></div></article>
+        <article class="phase phase-2"><div class="phase-marker">02</div><div class="phase-heading"><p class="eyebrow">Operación conectada</p><h2>Del inmueble<br>a la operación.</h2><p>Obras, contratos, arriendos, ventas y resultados. Incorpore módulos según la prioridad de Casabra.</p><span class="pill optional">Opcionales · 4.000 horas estimadas</span><p class="muted">La selección solo ayuda a conversar sobre escenarios. No modifica un precio ni equivale a contratación.</p><p id="scenario-summary" class="scenario-summary" aria-live="polite">Ningún módulo seleccionado para el escenario.</p></div><div class="phase-content"><div class="phase-modules" id="optional-modules"></div><p class="notice">Estas vistas explican beneficio, alcance y dependencias; no incluyen prototipos de fase 2. El orden de ejecución se acordará según prioridades.</p></div></article>
+        <article class="phase phase-3"><div class="phase-marker">03</div><div class="phase-heading"><p class="eyebrow">Core financiero</p><h2>Una capacidad<br>propia de Casabra.</h2><p>Transformar el conocimiento acumulado en soluciones de financiación y nuevas oportunidades de ingresos recurrentes.</p><span class="pill future">Desarrollo futuro · Alcance por definir</span></div><div class="phase-content"><div class="future-benefits"><h3>Más control sobre la capacidad financiera</h3><p>Control y trazabilidad financiera, integración con los datos y procesos propios, y menor dependencia del proveedor. Una transición completada podría sustituir el cargo fijo del tercero, según contrato y alcance; requiere validar los costos propios.</p></div><div class="future-capabilities"><span>Créditos</span><span>Desembolsos</span><span>Pagos</span><span>Cartera</span><span>Nuevos productos financieros</span></div><p>El núcleo financiero propio se construirá a partir del modelo de negocio y la experiencia operativa. El PDF no asigna horas ni presupuesto a esta fase.</p><div class="transition-path"><div><b>1. Planificación</b><p>Definir productos, reglas, alcance y responsabilidades.</p></div><div><b>2. Migración</b><p>Acordar datos, convivencia y traslado desde el proveedor.</p></div><div><b>3. Validación</b><p>Comprobar saldos, operación y controles antes de la transición.</p></div></div><p class="muted">Ruta de transición propuesta para discusión; requiere definición y validación.</p><div class="cost-comparison"><h3>Entender el costo antes de evolucionar</h3><div class="metric-grid"><div class="metric"><span>Mínimo de LeanCore</span><strong>USD 1.500</strong><small>por mes · Según PDF</small></div><div class="metric"><span>Mínimo anualizado</span><strong>USD 18.000</strong><small>1.500 × 12 meses · Referencia</small></div><div class="metric"><span>Administración de cada crédito</span><strong>USD 0,30</strong><small>Periodicidad y relación con el mínimo: por validar</small></div></div><p>El mínimo anualizado es una referencia de gasto del proveedor, no un ahorro neto proyectado. Un core propio implica desarrollo, infraestructura, operación, mantenimiento, soporte y controles, por estimar.</p></div></div></article>
+      </div>
+      <section class="section map-ending"><p class="eyebrow">El siguiente paso</p><h2>Priorizar juntos.<br>Construir con claridad.</h2><p>Acordar el alcance de cada módulo, validar dependencias y definir sus entregables antes de iniciar.</p><button class="button primary" data-tab="vision">Volver a la propuesta inicial <span aria-hidden="true">←</span></button></section>
+    </section>
+  </main>
+  <footer class="site-footer"><span>CASABRA · Plataforma integral</span><p>Fuente comercial: Cotización CASABRA V2 · 17/11/2026. Demostración local con información ficticia.</p><span>Visión, control y crecimiento.</span></footer>
+  <dialog id="module-dialog" class="module-dialog" aria-labelledby="module-title"><div class="dialog-header"><span class="eyebrow" id="dialog-kicker">Explorar módulo</span><button id="close-dialog" class="button secondary" aria-label="Cerrar módulo y volver al origen">Cerrar <span aria-hidden="true">×</span></button></div><div id="dialog-content" class="dialog-content"></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
+
+
